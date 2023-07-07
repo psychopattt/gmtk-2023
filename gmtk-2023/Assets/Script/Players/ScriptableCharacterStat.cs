@@ -16,12 +16,13 @@ public class ScriptableCharacterStat : ScriptableObject
     [SerializeField]
     private List<Attack> attacks;
 
-    public int getHealth()
+    public int GetHealth()
     {
         return health;
     }
+
     public void Damage(int damageAmount)
     {
-        this.health -= damageAmount;
+        health -= damageAmount;
     }
 }

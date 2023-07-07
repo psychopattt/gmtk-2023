@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75e502ca26245f446a00c73c44fda255, type: 3}
   m_Name: SwipeAttack
   m_EditorClassIdentifier: 
-  name: Light Attack
-  damage: 5
-  targetAmount: 1
+  attackName: 
+  damage: 0
+  targetAmount: 3
   attackAmount: 1

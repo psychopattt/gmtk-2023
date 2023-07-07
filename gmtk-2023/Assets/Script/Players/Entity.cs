@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Entity : MonoBehaviour
 {
     [SerializeField]
     private ScriptableCharacterStat playerStats;
