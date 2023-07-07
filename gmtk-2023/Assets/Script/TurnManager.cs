@@ -9,10 +9,16 @@ public class TurnManager : MonoBehaviour
 
     [SerializeField]
     private Transform pfCharacter;
+
+    [SerializeField]
+    private Transform mainCanvas;
+
     void Start()
     {
         gameState = GameState.Start;
-
+        
+        SpawnMob(true);
+        SpawnMob(false);
     }
 
     void SpawnMob(bool isPlayerTeam)
@@ -26,6 +32,7 @@ public class TurnManager : MonoBehaviour
         {
             position = new Vector3(50, 0);
         }
-        Instantiate(pfCharacter, position, Quaternion.identity);
+        Transform newMob = Instantiate(pfCharacter, position, Quaternion.identity);
+        newMob.SetParent(mainCanvas);
     }
 }
