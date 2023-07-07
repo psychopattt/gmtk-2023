@@ -5,7 +5,10 @@ using UnityEngine;
 public class ScriptableCharacterStat : ScriptableObject
 {
     [SerializeField]
-    private string playerName;
+    private string entityName;
+
+    [SerializeField]
+    private EntityType entityType;
 
     [SerializeField]
     private Sprite baseSprite;
@@ -25,4 +28,6 @@ public class ScriptableCharacterStat : ScriptableObject
     {
         health -= damageAmount;
     }
+
+    public EntityType GetEntityType() => entityType;
 }
