@@ -1,14 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EntitySlots : MonoBehaviour
 {
-    [SerializeField] private EntitySlot[] slots;
+    private EntitySlot[] slots;
 
     void Start()
     {
-        
+        slots = transform.GetComponentsInChildren<EntitySlot>();
     }
 
     void Update()
@@ -29,11 +27,19 @@ public class EntitySlots : MonoBehaviour
 
     public void PlaceEntity(Entity entity)
     {
-
+        for (int i = 0; i < slots.Length; i++)
+        {
+            if (slots[i].IsAvailble())
+                slots[i].SetEntity(entity);
+        }
     }
 
     public void RemoveEntity(Entity entity)
     {
-
+        for (int i = 0; i < slots.Length; i++)
+        {
+            if (slots[i].GetEntity() == entity)
+                slots[i].Clear();
+        }
     }
 }

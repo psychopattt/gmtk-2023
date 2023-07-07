@@ -1,4 +1,4 @@
-public enum SlotType
+public enum EntityType
 {
     Mob,
     Player

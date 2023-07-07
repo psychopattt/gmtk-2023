@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EntityPlacer : MonoBehaviour
@@ -7,37 +5,28 @@ public class EntityPlacer : MonoBehaviour
     [SerializeField] private EntitySlots mobSlots;
     [SerializeField] private EntitySlots playerSlots;
 
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
         
     }
 
-    public bool HasAvailableSlots(SlotType slotType)
+    public bool HasAvailableSlots(EntityType slotType)
     {
-        switch (slotType)
-        {
-            case SlotType.Mob:
-                return mobSlots.HasAvailableSlots();
-            case SlotType.Player:
-                return playerSlots.HasAvailableSlots();
-        }
-
-        return false;
+        return slotType switch {
+            EntityType.Mob => mobSlots.HasAvailableSlots(),
+            EntityType.Player => playerSlots.HasAvailableSlots(),
+            _ => false,
+        };
     }
 
-    public void PlaceEntity(SlotType slotType, Entity entity)
+    public void PlaceEntity(Entity entity)
     {
-        switch (slotType)
+        switch (entity.GetStats().GetEntityType())
         {
-            case SlotType.Mob:
+            case EntityType.Mob:
                 mobSlots.PlaceEntity(entity);
                 break;
-            case SlotType.Player:
+            case EntityType.Player:
                 playerSlots.PlaceEntity(entity);
                 break;
         }

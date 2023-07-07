@@ -941,8 +941,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f834a2f61778dbc4b803cd3e335c8611, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mobSlots: {fileID: 0}
-  playerSlots: {fileID: 0}
+  mobSlots: {fileID: 220601427}
+  playerSlots: {fileID: 1531926759}
 --- !u!1 &1925101371
 GameObject:
   m_ObjectHideFlags: 0

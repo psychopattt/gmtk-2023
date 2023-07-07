@@ -14,4 +14,6 @@ public class Entity : MonoBehaviour
     {
         
     }
+
+    public ScriptableCharacterStat GetStats() => playerStats;
 }
