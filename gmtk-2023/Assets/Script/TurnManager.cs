@@ -4,15 +4,28 @@ using UnityEngine;
 
 public class TurnManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField]
+    private GameState gameState;
+
+    [SerializeField]
+    private Transform pfCharacter;
     void Start()
     {
-        
+        gameState = GameState.Start;
+
     }
 
-    // Update is called once per frame
-    void Update()
+    void SpawnMob(bool isPlayerTeam)
     {
-        
+        Vector3 position;
+        if (isPlayerTeam)
+        {
+            position = new Vector3(-50, 0);
+        }
+        else
+        {
+            position = new Vector3(50, 0);
+        }
+        Instantiate(pfCharacter, position, Quaternion.identity);
     }
 }
