@@ -43,7 +43,7 @@ public class TurnManager : MonoBehaviour
         GameObject newMob = Instantiate(pfCharacter);
         if (isPlayerTeam)
         {
-            ennemy.Add(newMob);
+            enemy.Add(newMob);
         }
         else
         {
