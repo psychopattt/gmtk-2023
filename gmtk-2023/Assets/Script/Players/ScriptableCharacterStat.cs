@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,18 +5,23 @@ using UnityEngine;
 public class ScriptableCharacterStat : ScriptableObject
 {
     [SerializeField]
+    private string playerName;
+
+    [SerializeField]
     private Sprite baseSprite;
 
     [SerializeField]
-    private int _life;
+    private int health;
+
+    [SerializeField]
+    private List<Attack> attacks;
 
     public int getHealth()
     {
-        return _life;
+        return health;
     }
-    public void setHealth(int life)
+    public void Damage(int damageAmount)
     {
-        _life = life;
+        this.health -= damageAmount;
     }
-
 }
