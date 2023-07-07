@@ -5,7 +5,11 @@ using UnityEngine;
 public class TurnManager : MonoBehaviour
 {
     [SerializeField]
-    private GameState gameState;
+    private GameState gameState
+    {
+        get { return gameState; }
+        set { gameStateChanged(gameState, value); gameState = value; }
+    }
 
     [SerializeField]
     private GameObject pfCharacter;
@@ -17,7 +21,7 @@ public class TurnManager : MonoBehaviour
     [SerializeField]
     private List<GameObject> players;
     [SerializeField]
-    private List<GameObject> ennemy;
+    private List<GameObject> enemy;
 
     [SerializeField]
     private int turnNumber = 0;
@@ -31,18 +35,7 @@ public class TurnManager : MonoBehaviour
         SpawnMob(true);
         SpawnMob(false);
 
-        gameState = GameState.PlayerTurn;
-        foreach(GameObject entity in players)
-        {
-            //entity.playturn
-            turnNumber++;
-        }
-        gameState = GameState.EnnemyTurn;
-        foreach(GameObject entity in ennemy)
-        {
-            //entity.playTurn
-            turnNumber++;
-        }
+        PlayTurn();
     }
 
     void SpawnMob(bool isPlayerTeam)
@@ -63,9 +56,29 @@ public class TurnManager : MonoBehaviour
     {
         turnNumber++;
     }
-
+    
     public void OnChangeTurn()
     {
 
+    }
+    public void PlayTurn()
+    {
+        gameState = GameState.PlayerTurn;
+        foreach (GameObject entity in players)
+        {
+            //entity.playturn
+            turnNumber++;
+        }
+        gameState = GameState.EnnemyTurn;
+        foreach (GameObject entity in enemy)
+        {
+            //entity.playTurn
+            turnNumber++;
+        }
+    }
+
+    public void gameStateChanged(GameState oldValue, GameState newValue)
+    {
+        Debug.Log("GameState has changed");
     }
 }
