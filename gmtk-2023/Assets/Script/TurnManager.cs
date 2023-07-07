@@ -8,31 +8,64 @@ public class TurnManager : MonoBehaviour
     private GameState gameState;
 
     [SerializeField]
-    private Transform pfCharacter;
+    private GameObject pfCharacter;
 
     [SerializeField]
     private Transform mainCanvas;
 
+
+    [SerializeField]
+    private List<GameObject> players;
+    [SerializeField]
+    private List<GameObject> ennemy;
+
+    [SerializeField]
+    private int turnNumber = 0;
+
+
+
     void Start()
     {
         gameState = GameState.Start;
-        
+        //SpawnEverything
         SpawnMob(true);
         SpawnMob(false);
+
+        gameState = GameState.PlayerTurn;
+        foreach(GameObject entity in players)
+        {
+            //entity.playturn
+            turnNumber++;
+        }
+        gameState = GameState.EnnemyTurn;
+        foreach(GameObject entity in ennemy)
+        {
+            //entity.playTurn
+            turnNumber++;
+        }
     }
 
     void SpawnMob(bool isPlayerTeam)
     {
-        Vector3 position;
+        GameObject newMob = Instantiate(pfCharacter);
         if (isPlayerTeam)
         {
-            position = new Vector3(-50, 0);
+            ennemy.Add(newMob);
         }
         else
         {
-            position = new Vector3(50, 0);
+            players.Add(newMob);
         }
-        Transform newMob = Instantiate(pfCharacter, position, Quaternion.identity);
-        newMob.SetParent(mainCanvas);
+        
+    }
+
+    public void incrementTurnNumber()
+    {
+        turnNumber++;
+    }
+
+    public void OnChangeTurn()
+    {
+
     }
 }
