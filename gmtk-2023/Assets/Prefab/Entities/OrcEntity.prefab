@@ -30,7 +30,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 601250266476128372, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
       propertyPath: attacks.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 601250266476128372, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
       propertyPath: attacks.Array.data[0]
