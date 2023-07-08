@@ -73,6 +73,22 @@ public class Entity : MonoBehaviour
         }
     }
 
+    public void ApplyStartTurnEffect()
+    {
+        //apply poison
+        foreach (StatusEffect effect in stats.ListStatuesEffect)
+        {
+            if(effect is Poison)
+            {
+                Poison poison = (Poison)effect;
+                stats.Health -= poison.calculateDamage();
+                if( stats.Health <= 0)
+                {
+                    OnDeath?.Invoke();
+                }
+            }
+        }
+    }
     public static bool operator ==(Entity entity1, Entity entity2)
     {
         if (entity1 is null && entity2 is null)
