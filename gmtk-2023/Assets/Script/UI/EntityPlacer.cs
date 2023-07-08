@@ -17,7 +17,7 @@ public class EntityPlacer : MonoBehaviour
 
     public void PlaceEntity(Entity entity)
     {
-        switch (entity.GetStats().GetEntityType())
+        switch (entity.Stats.Type)
         {
             case EntityType.Mob:
                 mobSlots.PlaceEntity(entity);
@@ -36,7 +36,7 @@ public class EntityPlacer : MonoBehaviour
 
     public void RemoveEntity(Entity entity)
     {
-        switch (entity.GetStats().GetEntityType())
+        switch (entity.Stats.Type)
         {
             case EntityType.Mob:
                 mobSlots.RemoveEntity(entity);

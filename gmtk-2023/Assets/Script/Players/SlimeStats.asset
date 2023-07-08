@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85117332a4cb3af419aa1e96c637e3a5, type: 3}
   m_Name: SlimeStats
   m_EditorClassIdentifier: 
-  playerName: Slime
-  baseSprite: {fileID: 21300000, guid: 36092fb2b07e9264fbd47c2bb8f51c25, type: 3}
+  displayName: Slime
+  type: 0
+  sprite: {fileID: 21300000, guid: 36092fb2b07e9264fbd47c2bb8f51c25, type: 3}
   health: 3
   attacks:
   - {fileID: 11400000, guid: 2e04aedf0b87db54a96db04ee4f6e0ef, type: 2}

@@ -5,18 +5,17 @@ public class EntitySlots : MonoBehaviour
     [SerializeField] private GameObject slotPrefab;
 
     private const int slotCount = 10;
-
     private EntitySlot[] slots = new EntitySlot[slotCount];
 
-    private void Start()
+    private void Awake()
     {
         Vector3 offset = new Vector3();
 
         for (int i = 0; i < slotCount; i++)
         {
             offset.x = Random.Range(-100, 100);
-            offset.y += 20;
-            offset.z -= 10;
+            offset.y += 50;
+            offset.z += 10;
 
             slots[i] = Instantiate(slotPrefab, transform).GetComponent<EntitySlot>();
             slots[i].transform.position += offset;
@@ -39,7 +38,10 @@ public class EntitySlots : MonoBehaviour
         for (int i = 0; i < slots.Length; i++)
         {
             if (slots[i].IsAvailable())
+            {
                 slots[i].SetEntity(entity);
+                break;
+            }
         }
     }
 
@@ -48,7 +50,10 @@ public class EntitySlots : MonoBehaviour
         for (int i = 0; i < slots.Length; i++)
         {
             if (slots[i].GetEntity() == entity)
+            {
                 slots[i].Clear();
+                break;
+            }
         }
     }
 

@@ -20,29 +20,37 @@ public class Entity : MonoBehaviour
         
     }
 
-    public ScriptableCharacterStat GetStats() => stats;
+    public ScriptableCharacterStat Stats
+    {
+        get => stats;
+    }
 
     public void Damage(int damageAmount)
     {
         stats.Damage(damageAmount);
-        int currenHealth = stats.GetHealth();
+        int currentHealth = stats.Health;
 
-        if (currenHealth < 0)
+        if (currentHealth < 0)
         {
             OnDeath?.Invoke();
         }
         else
         {
             if (damageAmount > 0)
-                OnHealthLost?.Invoke(currenHealth);
+                OnHealthLost?.Invoke(currentHealth);
             else
-                OnHealthGained?.Invoke(currenHealth);
+                OnHealthGained?.Invoke(currentHealth);
         }
     }
 
     public static bool operator ==(Entity entity1, Entity entity2)
     {
-        return entity1.GetInstanceID() == entity2.GetInstanceID();
+        if (entity1 is null && entity2 is null)
+            return true;
+        else if (entity1 is null || entity2 is null)
+            return false;
+        else
+            return  entity1.GetInstanceID() == entity2.GetInstanceID();
     }
 
     public static bool operator !=(Entity entity1, Entity entity2)
