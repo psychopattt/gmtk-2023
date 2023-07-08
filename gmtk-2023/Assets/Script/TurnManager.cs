@@ -51,13 +51,14 @@ public class TurnManager : MonoBehaviour
         for (int i= 0; i < 4; i++)
         {
             
-            int randomEnnemy = Random.RandomRange(0, enemyEntity.Count());
+            int randomEnnemy = Random.Range(0, enemyEntity.Count());
             entityPlacer.PlaceEntity(enemyEntity[randomEnnemy]);
         }
 
         yield return new WaitForSeconds(2f);
 
         gameState = GameState.PlayerTurn;
+        PlayerTurn();
     }
 
     public void incrementTurnNumber()

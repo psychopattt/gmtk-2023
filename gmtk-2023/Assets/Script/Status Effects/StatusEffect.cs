@@ -1,5 +1,44 @@
-public class StatusEffect
+using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
+using UnityEngine;
+
+[CreateAssetMenu]
+public class StatusEffect : ScriptableObject
 {
-    private string name;
-    private int damagePerTurn;
+   [SerializeField]
+    private string name = "basicEffect";
+    [SerializeField]
+    private int amountOfStack = 0;
+
+    public void addStack(int stack)
+    {
+        amountOfStack += stack;
+    }
+
+    public bool DoesStatusAlreadyExist(List<StatusEffect> currentEffect, StatusEffect EffectToSearch)
+    {
+        foreach (StatusEffect effect in currentEffect)
+        {
+            if (effect.name == EffectToSearch.name)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    public int IndexOfStatusEffect(List<StatusEffect> currentEffect, StatusEffect EffectToSearch)
+    {
+        if (DoesStatusAlreadyExist(currentEffect, EffectToSearch)) return -1;
+
+        for (int i =0; i < currentEffect.Count(); i++)
+        {
+            if (currentEffect[i].name == EffectToSearch.name)
+            {
+                return i;
+            }
+        }
+        //something went wrong
+        return -1;
+    }
 }

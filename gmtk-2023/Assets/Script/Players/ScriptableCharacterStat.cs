@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [CreateAssetMenu]
@@ -42,6 +43,16 @@ public class ScriptableCharacterStat : ScriptableObject
     {
         get => attacks;
         set => attacks = value;
+    }
+
+
+
+    [SerializeField] private List<StatusEffect> listStatusEffect;
+
+    public List<StatusEffect> ListStatuesEffect
+    {
+        get => listStatusEffect;
+        set => listStatusEffect = value;
     }
 
     public void Damage(int damageAmount)
