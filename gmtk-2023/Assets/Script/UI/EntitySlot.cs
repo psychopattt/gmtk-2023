@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,7 +8,8 @@ public class EntitySlot : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
 
     private Entity entity = null;
-    Canvas healthBarCanvas;
+    private Canvas healthBarCanvas;
+    private Vector3 position;
 
     private void Awake()
     {
@@ -25,10 +27,17 @@ public class EntitySlot : MonoBehaviour
         this.entity = entity;
         healthBar.gameObject.SetActive(true);
         spriteRenderer.sprite = entity.Stats.Sprite;
+        healthBar.value = entity.Stats.Health / (float)entity.Stats.MaxHealth;
         healthBarCanvas.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0.005f * entity.Stats.Sprite.rect.height, 0);
+        transform.position = position + new Vector3(Random.Range(-200, 200), Random.Range(-20, 20), 0);
 
         AddEventListeners();
         PlayEnterAnimation();
+    }
+
+    public void SetPosition(Vector3 position)
+    {
+        this.position = position;
     }
 
     private void AddEventListeners()
@@ -45,6 +54,8 @@ public class EntitySlot : MonoBehaviour
             RemoveEventListeners();
             PlayExitAnimation();
             entity = null;
+            spriteRenderer.sprite = null;
+            healthBar.gameObject.SetActive(false);
         }
     }
 
@@ -68,12 +79,12 @@ public class EntitySlot : MonoBehaviour
     private void HandleHealthGainedAnimation(int currentHealth)
     {
         // TODO entity slot HealthGainedAnimation
-        healthBar.value = currentHealth / entity.Stats.MaxHealth;
+        healthBar.value = currentHealth / (float)entity.Stats.MaxHealth;
     }
 
     private void HandleHealthLostAnimation(int currentHealth)
     {
         // TODO entity slot HealthLostAnimation
-        healthBar.value = currentHealth / entity.Stats.MaxHealth;
+        healthBar.value = currentHealth / (float)entity.Stats.MaxHealth;
     }
 }

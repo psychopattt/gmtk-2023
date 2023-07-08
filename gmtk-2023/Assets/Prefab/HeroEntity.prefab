@@ -86,7 +86,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackName: Big Attack
-  damage: 20000
+  damage: 3
   targetAmount: 5
   attackAmount: 3
   selfDamage: 0
