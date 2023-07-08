@@ -33,28 +33,42 @@ public class EntitySlots : MonoBehaviour
         return false;
     }
 
-    public void PlaceEntity(Entity entity)
+    public int PlaceEntity(Entity entity)
     {
         for (int i = 0; i < slots.Length; i++)
         {
             if (slots[i].IsAvailable())
             {
                 slots[i].SetEntity(entity);
-                break;
+                return i;
             }
         }
+
+        return -1;
     }
 
-    public void RemoveEntity(Entity entity)
+    public int GetEntitySlot(Entity entity)
     {
         for (int i = 0; i < slots.Length; i++)
         {
             if (slots[i].GetEntity() == entity)
-            {
-                slots[i].Clear();
-                break;
-            }
+                return i;
         }
+
+        return -1;
+    }
+
+    public void RemoveEntity(int slotIndex)
+    {
+        slots[slotIndex].Clear();
+    }
+
+    public void RemoveEntity(Entity entity)
+    {
+        int slotIndex = GetEntitySlot(entity);
+
+        if (slotIndex != -1)
+            slots[slotIndex].Clear();
     }
 
     public void RemoveAllEntities()

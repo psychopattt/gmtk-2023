@@ -15,23 +15,46 @@ public class EntityPlacer : MonoBehaviour
         };
     }
 
-    public void PlaceEntity(Entity entity)
+    /// <summary>
+    /// Places the entity in the first available slot and returns the slot index
+    /// Returns -1 if the entity could not be placed in any slot
+    /// </summary>
+    public int PlaceEntity(Entity entity)
     {
         switch (entity.Stats.Type)
         {
             case EntityType.Mob:
-                mobSlots.PlaceEntity(entity);
-                break;
+                return mobSlots.PlaceEntity(entity);
             case EntityType.Player:
-                playerSlots.PlaceEntity(entity);
-                break;
+                return playerSlots.PlaceEntity(entity);
         }
+
+        return -1;
     }
 
     public void PlaceEntities(IEnumerable<Entity> entities)
     {
         foreach (Entity entity in entities)
             PlaceEntity(entity);
+    }
+
+    /// <summary>
+    /// Returns the slot index of the entity
+    /// Returns -1 if the entity is not in any slot
+    /// </summary>
+    public int GetEntitySlot(Entity entity)
+    {
+        switch (entity.Stats.Type)
+        {
+            case EntityType.Mob:
+                mobSlots.GetEntitySlot(entity);
+                break;
+            case EntityType.Player:
+                playerSlots.GetEntitySlot(entity);
+                break;
+        }
+
+        return -1;
     }
 
     public void RemoveEntity(Entity entity)
@@ -43,6 +66,19 @@ public class EntityPlacer : MonoBehaviour
                 break;
             case EntityType.Player:
                 playerSlots.RemoveEntity(entity);
+                break;
+        }
+    }
+
+    public void RemoveEntity(EntityType type, int slotIndex)
+    {
+        switch (type)
+        {
+            case EntityType.Mob:
+                mobSlots.RemoveEntity(slotIndex);
+                break;
+            case EntityType.Player:
+                playerSlots.RemoveEntity(slotIndex);
                 break;
         }
     }
@@ -68,7 +104,7 @@ public class EntityPlacer : MonoBehaviour
 
     public void RemoveAllEntities()
     {
-        RemoveAllEntities(EntityType.Player);
-        RemoveAllEntities(EntityType.Mob);
+        mobSlots.RemoveAllEntities();
+        playerSlots.RemoveAllEntities();
     }
 }

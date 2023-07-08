@@ -32,9 +32,12 @@ public class EntitySlot : MonoBehaviour
 
     public void Clear()
     {
-        UnsubscribeFromEvents();
-        PlayExitAnimation();
-        entity = null;
+        if (entity != null)
+        {
+            UnsubscribeFromEvents();
+            PlayExitAnimation();
+            entity = null;
+        }
     }
 
     private void UnsubscribeFromEvents()
