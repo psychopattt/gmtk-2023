@@ -1,7 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu]
-public class Attack : ScriptableObject
+public class Attack : MonoBehaviour
 {
     [SerializeField]
     private string attackName;
