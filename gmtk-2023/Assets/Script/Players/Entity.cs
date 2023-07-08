@@ -61,7 +61,7 @@ public class Entity : MonoBehaviour
     public void DoAttack(Entity entity, Attack attack)
     {
         entity.AddStackStatusEffect(entity, attack);
-        bool isCrit = UnityEngine.Random.Range(0, 100) < attack.CritChance;
+        bool isCrit = UnityEngine.Random.Range(0, 100) <= attack.CritChance;
 
         if (isCrit)
         {
