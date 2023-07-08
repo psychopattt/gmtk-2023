@@ -11,6 +11,9 @@ GameObject:
   - component: {fileID: 945252140855865523}
   - component: {fileID: 9100964917543658692}
   - component: {fileID: 601250266476128372}
+  - component: {fileID: -8051052639026727785}
+  - component: {fileID: -3380366204384377352}
+  - component: {fileID: -5834214882119249249}
   m_Layer: 0
   m_Name: EntityPrefab
   m_TagString: Untagged
@@ -64,4 +67,52 @@ MonoBehaviour:
   health: 3
   attacks:
   - {fileID: 11400000, guid: 2e04aedf0b87db54a96db04ee4f6e0ef, type: 2}
-  listStatusEffect: []
+  listStatusEffect:
+  - {fileID: -8051052639026727785}
+  - {fileID: -3380366204384377352}
+  - {fileID: -5834214882119249249}
+--- !u!114 &-8051052639026727785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 351731024190772147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cdca75ea6147604d99ee046418344b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Poison
+  amountOfStack: 0
+  poisonDamage: 70
+--- !u!114 &-3380366204384377352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 351731024190772147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 883c5e677f3f9044fb69a01c3e05a9bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Blind
+  amountOfStack: 0
+  blindEffect: 0
+  maxBlind: 0.95
+--- !u!114 &-5834214882119249249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 351731024190772147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff072c64d4768c943965339768b5886a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Weaken
+  amountOfStack: 0

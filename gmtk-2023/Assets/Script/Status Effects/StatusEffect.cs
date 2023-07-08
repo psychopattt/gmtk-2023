@@ -15,6 +15,10 @@ public abstract class StatusEffect : MonoBehaviour
     {
         amountOfStack += stack;
     }
+    public void setStack (int stack)
+    {
+        amountOfStack = stack;
+    }
 
     public bool DoesStatusAlreadyExist(List<StatusEffect> currentEffect, StatusEffect EffectToSearch)
     {
