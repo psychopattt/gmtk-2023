@@ -38,7 +38,7 @@ public class PlayerTurnManager : MonoBehaviour
         {
             OnGameTurnEnded?.Invoke(GameState.Won);
         }
-        else if (turnNumber == playerSpawner.EntityCount)
+        else if (turnNumber >= playerSpawner.EntityCount)
         {
             turnNumber = 0;
             OnGameTurnEnded?.Invoke(GameState.MobTurn);

@@ -43,7 +43,7 @@ public class MobTurnManager : MonoBehaviour
     {
         turnNumber++;
 
-        if (turnNumber == mobSpawner.EntityCount)
+        if (turnNumber >= mobSpawner.EntityCount)
         {
             OnGameTurnEnded?.Invoke(GameState.PlayerTurn);
             turnNumber = 0;
