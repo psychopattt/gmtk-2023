@@ -13,7 +13,7 @@ public class MenuLogic : MonoBehaviour
     private void Start()
     {
         
-        setMenu();
+
     }
 
     public void setEntityObject(GameObject currentPlayer)
@@ -22,11 +22,11 @@ public class MenuLogic : MonoBehaviour
         
     }
 
-    private void setMenu()
+    private void setMenu(Entity entity)
     {
-       
-        //EntityObject.
-        int attackOptionNb = 4;
+
+        
+        int attackOptionNb = entity.Stats.Attacks.Count;
         
         float width = gameObject.GetComponent<RectTransform>().rect.width;
         float height = gameObject.GetComponent<RectTransform>().rect.height;
