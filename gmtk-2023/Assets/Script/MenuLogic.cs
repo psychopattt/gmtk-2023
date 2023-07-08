@@ -14,9 +14,17 @@ public class MenuLogic : MonoBehaviour
     {
         //mobTurnManager = TurnManager.GetComponent<MobTurnManager>();
     }
-
+    public void deleteAllButton()
+    {
+        foreach (Button button in gameObject.GetComponentsInChildren<Button>())
+        {
+            Destroy(button.gameObject);
+        }
+    }
     public void SetMenu(Entity entity)
     {
+        
+        
         int attackOptionNb = entity.Stats.Attacks.Count;
         
         float width = gameObject.GetComponent<RectTransform>().rect.width;
@@ -27,7 +35,6 @@ public class MenuLogic : MonoBehaviour
             GameObject button = Instantiate(Button, gameObject.transform);
             Button buttonComp = button.GetComponent<Button>();
             buttonComp.onClick.AddListener(() => mobTurnManager.Attack(entity.Stats.Attacks[0]));
-            Debug.Log(entity.Stats.Attacks[0].ToString());
             button.GetComponentInChildren<TextMeshProUGUI>().text = entity.Stats.Attacks[0].AttackName;
             RectTransform rt = button.GetComponent<RectTransform>();
             rt.anchoredPosition = new Vector2((width / 2)-(rt.sizeDelta.x/2), (height / 2)- (rt.sizeDelta.y / 2));

@@ -32,7 +32,7 @@ public class Entity : MonoBehaviour
         stats.Damage(damageAmount);
         int currentHealth = stats.Health;
 
-        if (currentHealth < 0)
+        if (currentHealth <= 0)
         {
             OnDeath?.Invoke();
         }
