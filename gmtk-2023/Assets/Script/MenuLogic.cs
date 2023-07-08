@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -44,7 +45,8 @@ public class MenuLogic : MonoBehaviour
             GameObject button = Instantiate(Button, gameObject.transform);
             Button buttonComp = button.GetComponent<Button>();
             buttonComp.onClick.AddListener(() => mobTurnManager.Attack(entity.Stats.Attacks[0]));
-            button.GetComponentInChildren<Text>().text = entity.Stats.Attacks[0].ToString();
+            Debug.Log(entity.Stats.Attacks[0].ToString());
+            button.GetComponentInChildren<TextMeshProUGUI>().text = entity.Stats.Attacks[0].AttackName;
             RectTransform rt = button.GetComponent<RectTransform>();
             rt.anchoredPosition = new Vector2((width / 2)-(rt.sizeDelta.x/2), (height / 2)- (rt.sizeDelta.y / 2));
         }
