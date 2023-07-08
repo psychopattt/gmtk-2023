@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &-7328327113079127991
 MonoBehaviour:
@@ -46,3 +46,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameState: 0
   pfCharacter: {fileID: 945252140855865523, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
+  entityPlacer: {fileID: 0}
+  entity: {fileID: 3429928150251903439, guid: 349e4c1ec50cf1f41871fd29486ecb73, type: 3}
+  mainCanvas: {fileID: 0}
+  players: []
+  enemy: []
+  turnNumber: 0
