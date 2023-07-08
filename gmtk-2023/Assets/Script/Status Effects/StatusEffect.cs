@@ -8,7 +8,11 @@ public abstract class StatusEffect : MonoBehaviour
     [SerializeField]
     private string statusName = "basicEffect";
     [SerializeField]
-    private int amountOfStack = 0;
+    private int amountOfStack = 50;
+    public string getStatusName()
+    {
+        return statusName;
+    }
 
     public void addStack(int stack)
     {

@@ -14,7 +14,9 @@ public class Entity : MonoBehaviour
 
     void Start()
     {
-        
+        stats.ListStatuesEffect.Add(gameObject.AddComponent<Poison>());
+        stats.ListStatuesEffect.Add(gameObject.AddComponent<Blind>());
+        stats.ListStatuesEffect.Add(gameObject.AddComponent<Weaken>());
     }
 
     void Update()
@@ -73,7 +75,7 @@ public class Entity : MonoBehaviour
         {
             for (int y = 0; y < entity.stats.ListStatuesEffect.Count(); y++)
             {
-                if (attack.StatusEffects[i].name == entity.stats.ListStatuesEffect[i].name)
+                if (attack.StatusEffects[i].getStatusName() == entity.stats.ListStatuesEffect[i].getStatusName())
                 {
                     entity.stats.ListStatuesEffect[i].addStack(attack.StatusEffects[i].getStack());
                 }
