@@ -1,14 +1,10 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EntityPlacer : MonoBehaviour
 {
     [SerializeField] private EntitySlots mobSlots;
     [SerializeField] private EntitySlots playerSlots;
-
-    void Update()
-    {
-        
-    }
 
     public bool HasAvailableSlots(EntityType slotType)
     {
@@ -30,5 +26,49 @@ public class EntityPlacer : MonoBehaviour
                 playerSlots.PlaceEntity(entity);
                 break;
         }
+    }
+
+    public void PlaceEntities(IEnumerable<Entity> entities)
+    {
+        foreach (Entity entity in entities)
+            PlaceEntity(entity);
+    }
+
+    public void RemoveEntity(Entity entity)
+    {
+        switch (entity.GetStats().GetEntityType())
+        {
+            case EntityType.Mob:
+                mobSlots.RemoveEntity(entity);
+                break;
+            case EntityType.Player:
+                playerSlots.RemoveEntity(entity);
+                break;
+        }
+    }
+
+    public void RemoveEntities(IEnumerable<Entity> entities)
+    {
+        foreach (Entity entity in entities)
+            RemoveEntity(entity);
+    }
+
+    public void RemoveAllEntities(EntityType type)
+    {
+        switch (type)
+        {
+            case EntityType.Mob:
+                mobSlots.RemoveAllEntities();
+                break;
+            case EntityType.Player:
+                playerSlots.RemoveAllEntities();
+                break;
+        }
+    }
+
+    public void RemoveAllEntities()
+    {
+        RemoveAllEntities(EntityType.Player);
+        RemoveAllEntities(EntityType.Mob);
     }
 }

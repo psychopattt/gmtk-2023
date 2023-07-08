@@ -4,11 +4,47 @@ public class EntitySlot : MonoBehaviour
 {
     private Entity entity = null;
 
-    public bool SetEntity(Entity entity) => this.entity = entity;
+    public bool IsAvailable() => entity != null;
 
-    public bool GetEntity() => entity;
+    public Entity GetEntity() => entity;
 
-    public bool IsAvailble() => entity != null;
+    public void SetEntity(Entity entity)
+    {
+        this.entity = entity;
+        entity.OnDeath += Clear;
+        entity.OnHealthLost += PlayHealthLostAnimation;
+        entity.OnHealthGained += PlayHealthGainedAnimation;
+        
+        PlayEnterAnimation();
+    }
 
-    public void Clear() => entity = null;
+    public void Clear()
+    {
+        entity.OnDeath -= Clear;
+        entity.OnHealthLost -= PlayHealthGainedAnimation;
+        entity.OnHealthGained -= PlayHealthGainedAnimation;
+        PlayExitAnimation();
+
+        entity = null;
+    }
+
+    private void PlayEnterAnimation()
+    {
+        // TODO
+    }
+
+    private void PlayExitAnimation()
+    {
+        // TODO
+    }
+
+    private void PlayHealthGainedAnimation(int currentHealth)
+    {
+        // TODO
+    }
+
+    private void PlayHealthLostAnimation(int currentHealth)
+    {
+        // TODO
+    }
 }
