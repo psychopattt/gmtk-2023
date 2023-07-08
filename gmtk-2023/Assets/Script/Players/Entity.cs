@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Entity : MonoBehaviour
@@ -44,17 +45,32 @@ public class Entity : MonoBehaviour
         }
     }
 
-    public void Attack(List<Entity> entities, Attack attack)
+    public void Attack(Entity[] entities, Attack attack)
     {
         //stats.Type;
-        for (int i = 0; i < entities.Count; i++)
+        for (int i = 0; i < entities.Length; i++)
         {
             DoAttack(entities[i], attack);
         }
     }
     public void DoAttack(Entity entity, Attack attack)
     {
+        entity.AddStackStatusEffect(entity, attack);
         entity.Damage(attack.AttackAmount);
+    }
+    public void AddStackStatusEffect(Entity entity, Attack attack)
+    {
+        if (attack.StatusEffects.Length == 0) return;
+        for (int i = 0; i < attack.StatusEffects.Length; i++)
+        {
+            for (int y = 0; y < entity.stats.ListStatuesEffect.Count(); y++)
+            {
+                if (attack.StatusEffects[i].name == entity.stats.ListStatuesEffect[i].name)
+                {
+                    entity.stats.ListStatuesEffect[i].addStack(attack.StatusEffects[i].getStack());
+                }
+            }
+        }
     }
 
     public static bool operator ==(Entity entity1, Entity entity2)
