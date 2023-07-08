@@ -95,6 +95,7 @@ MonoBehaviour:
   damage: 50
   targetAmount: 1
   attackAmount: 3
+  selfDamage: 0
   statusEffects:
   - {fileID: 558370452109796886}
 --- !u!114 &558370452109796886
@@ -128,4 +129,5 @@ MonoBehaviour:
   damage: 300
   targetAmount: 1
   attackAmount: 1
+  selfDamage: 9999999
   statusEffects: []

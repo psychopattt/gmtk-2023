@@ -57,6 +57,10 @@ public class Entity : MonoBehaviour
     {
         entity.AddStackStatusEffect(entity, attack);
         entity.Damage(attack.AttackAmount);
+        if(attack.SelfDamage != 0)
+        {
+            Damage(attack.SelfDamage);
+        }
     }
     public void AddStackStatusEffect(Entity entity, Attack attack)
     {
