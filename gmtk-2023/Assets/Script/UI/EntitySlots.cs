@@ -9,7 +9,7 @@ public class EntitySlots : MonoBehaviour
 
     private void Awake()
     {
-        Vector3 offset = new Vector3();
+        Vector3 offset = new Vector3(0, 0, 5000);
 
         for (int i = 0; i < slotCount; i++)
         {

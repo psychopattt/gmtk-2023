@@ -1,13 +1,17 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EntitySlot : MonoBehaviour
 {
+    [SerializeField] private Slider healthBar;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+
     private Entity entity = null;
-    private SpriteRenderer spriteRenderer;
 
     private void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        healthBar.gameObject.SetActive(false);
+        healthBar.GetComponentInParent<Canvas>().worldCamera = GameObject.FindGameObjectWithTag("UI Camera").GetComponent<Camera>();
     }
 
     public bool IsAvailable() => entity == null;
@@ -17,6 +21,7 @@ public class EntitySlot : MonoBehaviour
     public void SetEntity(Entity entity)
     {
         this.entity = entity;
+        healthBar.gameObject.SetActive(true);
         spriteRenderer.sprite = entity.Stats.Sprite;
         
         AddEventListeners();

@@ -23,7 +23,7 @@ PrefabInstance:
     - target: {fileID: 601250266476128372, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
       propertyPath: sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 6f4b6a49dfaf41b43a660ccb01df82ca, type: 3}
+      objectReference: {fileID: 21300000, guid: 88f5bc584dd555c4a9d7c06187d14501, type: 3}
     - target: {fileID: 601250266476128372, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
       propertyPath: displayName
       value: Hero
