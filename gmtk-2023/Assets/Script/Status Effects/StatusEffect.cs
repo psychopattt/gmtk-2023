@@ -6,7 +6,7 @@ using UnityEngine;
 
 public abstract class StatusEffect : MonoBehaviour
 {
-   [SerializeField]
+    [SerializeField]
     private string name = "basicEffect";
     [SerializeField]
     private int amountOfStack = 0;

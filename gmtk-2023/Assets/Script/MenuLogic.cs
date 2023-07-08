@@ -11,9 +11,15 @@ public class MenuLogic : MonoBehaviour
     [SerializeField]
     private GameObject EntityObject;
 
+    [SerializeField]
+    private GameObject TurnManager;
+
+    [SerializeField]
+    private MobTurnManager mobTurnManager;
+
     private void Start()
     {
-        
+        mobTurnManager = TurnManager.GetComponent<MobTurnManager>();
 
     }
 
