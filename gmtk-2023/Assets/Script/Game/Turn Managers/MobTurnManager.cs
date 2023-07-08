@@ -22,14 +22,28 @@ public class MobTurnManager : MonoBehaviour
 
     private void ApplyStatusEffects()
     {
-        Entity currentEntity = playerSpawner.GetEntity(turnNumber);
-        currentEntity.ApplyStartTurnEffect();
+        if (mobSpawner.HasLivingEntities())
+        {
+            Entity currentEntity = mobSpawner.GetEntity(turnNumber);
+            currentEntity.ApplyStartTurnEffect();
+        }
+        else
+        {
+            EndTurn();
+        }
     }
 
     public void ActivateUserButtons()
     {
-        menuLogic.SetMenu(playerSpawner.GetEntity(turnNumber));
-        // TODO activate UI controls for the mob currently playing
+        if (mobSpawner.HasLivingEntities())
+        {
+            menuLogic.SetMenu(mobSpawner.GetEntity(turnNumber));
+            // TODO activate UI controls for the mob currently playing
+        }
+        else
+        {
+            EndTurn();
+        }
     }
 
     public void Attack(Attack attack)
@@ -51,6 +65,7 @@ public class MobTurnManager : MonoBehaviour
         else
         {
             OnEntityTurnEnded?.Invoke();
+            NextTurn();
         }
     }
 }

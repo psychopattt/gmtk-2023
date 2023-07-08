@@ -7,11 +7,13 @@ public class EntitySlot : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
 
     private Entity entity = null;
+    Canvas healthBarCanvas;
 
     private void Awake()
     {
         healthBar.gameObject.SetActive(false);
-        healthBar.GetComponentInParent<Canvas>().worldCamera = GameObject.FindGameObjectWithTag("UI Camera").GetComponent<Camera>();
+        healthBarCanvas = healthBar.GetComponentInParent<Canvas>();
+        healthBarCanvas.worldCamera = GameObject.FindGameObjectWithTag("UI Camera").GetComponent<Camera>();
     }
 
     public bool IsAvailable() => entity == null;
@@ -23,7 +25,8 @@ public class EntitySlot : MonoBehaviour
         this.entity = entity;
         healthBar.gameObject.SetActive(true);
         spriteRenderer.sprite = entity.Stats.Sprite;
-        
+        healthBarCanvas.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0.005f * entity.Stats.Sprite.rect.height, 0);
+
         AddEventListeners();
         PlayEnterAnimation();
     }
@@ -31,8 +34,8 @@ public class EntitySlot : MonoBehaviour
     private void AddEventListeners()
     {
         entity.OnDeath += Clear;
-        entity.OnHealthLost += PlayHealthLostAnimation;
-        entity.OnHealthGained += PlayHealthGainedAnimation;
+        entity.OnHealthLost += HandleHealthLostAnimation;
+        entity.OnHealthGained += HandleHealthGainedAnimation;
     }
 
     public void Clear()
@@ -48,8 +51,8 @@ public class EntitySlot : MonoBehaviour
     private void RemoveEventListeners()
     {
         entity.OnDeath -= Clear;
-        entity.OnHealthLost -= PlayHealthGainedAnimation;
-        entity.OnHealthGained -= PlayHealthGainedAnimation;
+        entity.OnHealthLost -= HandleHealthLostAnimation;
+        entity.OnHealthGained -= HandleHealthGainedAnimation;
     }
 
     private void PlayEnterAnimation()
@@ -62,13 +65,15 @@ public class EntitySlot : MonoBehaviour
         // TODO entity slot ExitAnimation
     }
 
-    private void PlayHealthGainedAnimation(int currentHealth)
+    private void HandleHealthGainedAnimation(int currentHealth)
     {
         // TODO entity slot HealthGainedAnimation
+        healthBar.value = currentHealth / entity.Stats.MaxHealth;
     }
 
-    private void PlayHealthLostAnimation(int currentHealth)
+    private void HandleHealthLostAnimation(int currentHealth)
     {
         // TODO entity slot HealthLostAnimation
+        healthBar.value = currentHealth / entity.Stats.MaxHealth;
     }
 }

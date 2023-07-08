@@ -398,8 +398,8 @@ MonoBehaviour:
   minEntityAmount: 1
   maxEntityAmount: 5
   entityPlacer: {fileID: 1872832154}
-  entityVariants:
-  - {fileID: 3429928150251903439, guid: 349e4c1ec50cf1f41871fd29486ecb73, type: 3}
+  entityPrefabs:
+  - {fileID: 6139826473357012664, guid: 349e4c1ec50cf1f41871fd29486ecb73, type: 3}
 --- !u!114 &1131140314 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 804579571850492281, guid: 204c88c888bb80444abdcc22820e97e4, type: 3}
@@ -750,8 +750,8 @@ MonoBehaviour:
   minEntityAmount: 1
   maxEntityAmount: 1
   entityPlacer: {fileID: 1872832154}
-  entityVariants:
-  - {fileID: 3429928150251903439, guid: 322577e4c0ea87843b4b8525790ae7d3, type: 3}
+  entityPrefabs:
+  - {fileID: 6139826473357012664, guid: 322577e4c0ea87843b4b8525790ae7d3, type: 3}
 --- !u!1 &1819383338
 GameObject:
   m_ObjectHideFlags: 0
