@@ -5,7 +5,10 @@ using UnityEngine;
 public class Blind : StatusEffect
 {
     //blindEffect need to be float so ignore amount in StatuesEffect
-    
+    private void Start()
+    {
+        setStatuesName("blind");
+    }
     [SerializeField]
     float blindEffect = 0;
     

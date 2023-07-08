@@ -145,7 +145,7 @@ MonoBehaviour:
   critChance: 5
   targetAmount: 1
   attackAmount: 1
-  selfDamage: 9999999
+  selfDamage: 0
   statusEffects:
   - {fileID: 6024999265832820769}
 --- !u!114 &6024999265832820769

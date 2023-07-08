@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Poison : StatusEffect
 {
+    private void Start()
+    {
+        setStatuesName("poison");
+    }
     [SerializeField]
     private int poisonDamage = 70;
 
