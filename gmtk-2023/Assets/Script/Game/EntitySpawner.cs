@@ -12,6 +12,7 @@ public class EntitySpawner : MonoBehaviour
     [SerializeField] private List<GameObject> entityPrefabs;
     private List<GameObject> currentEntityPrefabs;
     private List<Entity> currentEntities;
+    private int deathCount = 0;
 
     public event Action OnAllEntitiesDead;
 
@@ -51,6 +52,8 @@ public class EntitySpawner : MonoBehaviour
         return currentEntities;
     }
 
+    public int GetDeathCount() => deathCount;
+
     private void AddEventListeners(Entity entity)
     {
         entity.OnDeath += delegate { HandleEntityDeath(entity); };
@@ -58,6 +61,7 @@ public class EntitySpawner : MonoBehaviour
 
     private void HandleEntityDeath(Entity entity)
     {
+        deathCount++;
         int entityIndex = currentEntities.IndexOf(entity);
         currentEntities.RemoveAt(entityIndex);
 
