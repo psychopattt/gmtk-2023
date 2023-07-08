@@ -37,7 +37,7 @@ public class MenuLogic : MonoBehaviour
         {
             GameObject button = Instantiate(Button, gameObject.transform);
             Button buttonComp = button.GetComponent<Button>();
-            buttonComp.onClick.AddListener(() => mobTurnManager.Attack(entity.Stats.Attacks[0]));
+            buttonComp.onClick.AddListener(() => { deleteAllButton(); mobTurnManager.Attack(entity.Stats.Attacks[0]); });
             button.GetComponentInChildren<TMP_Text>().text = entity.Stats.Attacks[0].AttackName;
             RectTransform rt = button.GetComponent<RectTransform>();
             rt.anchoredPosition = new Vector2((width / 2)-(rt.sizeDelta.x/2), (height / 2)- (rt.sizeDelta.y / 2));
@@ -49,7 +49,7 @@ public class MenuLogic : MonoBehaviour
                 GameObject button = Instantiate(Button, gameObject.transform);
                 Button buttonComp = button.GetComponent<Button>();
                 int x = i;
-                buttonComp.onClick.AddListener(() => mobTurnManager.Attack(entity.Stats.Attacks[x]));
+                buttonComp.onClick.AddListener(() => { deleteAllButton(); mobTurnManager.Attack(entity.Stats.Attacks[x]); });
                 button.GetComponentInChildren<TMP_Text>().text = entity.Stats.Attacks[i].AttackName;
                 RectTransform rt = button.GetComponent<RectTransform>();
                 rt.anchoredPosition = new Vector2(((width / 3)*(i+1)) - (rt.sizeDelta.x / 2), (height / 2) - (rt.sizeDelta.y / 2));
@@ -62,14 +62,14 @@ public class MenuLogic : MonoBehaviour
                 GameObject button = Instantiate(Button, gameObject.transform);
                 Button buttonComp = button.GetComponent<Button>();
                 int x = i;
-                buttonComp.onClick.AddListener(() => mobTurnManager.Attack(entity.Stats.Attacks[x]));
+                buttonComp.onClick.AddListener(() => { deleteAllButton(); mobTurnManager.Attack(entity.Stats.Attacks[x]); });
                 button.GetComponentInChildren<TMP_Text>().text = entity.Stats.Attacks[i].AttackName;
                 RectTransform rt = button.GetComponent<RectTransform>();
                 rt.anchoredPosition = new Vector2((width / 3) * (i + 1) - (rt.sizeDelta.x / 2), height / 1.5f - (rt.sizeDelta.y / 2));
             }
             GameObject buttonBottom = Instantiate(Button, gameObject.transform);
             Button buttonBottomComp = buttonBottom.GetComponent<Button>();
-            buttonBottomComp.onClick.AddListener(() => mobTurnManager.Attack(entity.Stats.Attacks[2]));
+            buttonBottomComp.onClick.AddListener(() => { deleteAllButton(); mobTurnManager.Attack(entity.Stats.Attacks[2]); });
             buttonBottom.GetComponentInChildren<TMP_Text>().text = entity.Stats.Attacks[2].AttackName;
             RectTransform rtBottom = buttonBottom.GetComponent<RectTransform>();
             rtBottom.anchoredPosition = new Vector2((width / 2) - (rtBottom.sizeDelta.x / 2), (height / 3f) - (rtBottom.sizeDelta.y / 2));
@@ -81,7 +81,7 @@ public class MenuLogic : MonoBehaviour
                 GameObject button = Instantiate(Button, gameObject.transform);
                 Button buttonComp = button.GetComponent<Button>();
                 int x = i;
-                buttonComp.onClick.AddListener(() => mobTurnManager.Attack(entity.Stats.Attacks[x]));
+                buttonComp.onClick.AddListener(() => { deleteAllButton(); mobTurnManager.Attack(entity.Stats.Attacks[x]); });
                 button.GetComponentInChildren<TMP_Text>().text = entity.Stats.Attacks[i].ToString();
                 RectTransform rt = button.GetComponent<RectTransform>();
                 rt.anchoredPosition = new Vector2((width / 3) * (i + 1) - (rt.sizeDelta.x / 2), height / 1.5f - (rt.sizeDelta.y / 2));
@@ -91,7 +91,7 @@ public class MenuLogic : MonoBehaviour
                 GameObject button = Instantiate(Button, gameObject.transform);
                 Button buttonComp = button.GetComponent<Button>();
                 int x = i;
-                buttonComp.onClick.AddListener(() => mobTurnManager.Attack(entity.Stats.Attacks[x]));
+                buttonComp.onClick.AddListener(() => { deleteAllButton(); mobTurnManager.Attack(entity.Stats.Attacks[x]); });
                 button.GetComponentInChildren<TMP_Text>().text = entity.Stats.Attacks[i].ToString();
                 RectTransform rt = button.GetComponent<RectTransform>();
                 rt.anchoredPosition = new Vector2((width / 3) * (i + 1) - (rt.sizeDelta.x / 2), height / 3.6f - (rt.sizeDelta.y / 2));

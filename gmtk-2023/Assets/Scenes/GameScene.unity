@@ -249,6 +249,10 @@ PrefabInstance:
       propertyPath: mobTurnManager
       value: 
       objectReference: {fileID: 1680638618}
+    - target: {fileID: 4299946572639609856, guid: 204c88c888bb80444abdcc22820e97e4, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5618787566770574468, guid: 204c88c888bb80444abdcc22820e97e4, type: 3}
       propertyPath: m_Name
       value: MenuPanel
@@ -400,6 +404,8 @@ MonoBehaviour:
   entityPlacer: {fileID: 1872832154}
   entityPrefabs:
   - {fileID: 6139826473357012664, guid: 349e4c1ec50cf1f41871fd29486ecb73, type: 3}
+  - {fileID: 6139826473357012664, guid: f583cb3ed53f9834a8c7f6e6749cd849, type: 3}
+  - {fileID: 6139826473357012664, guid: 36f6bec0bf543f94382f5886ade7c4b3, type: 3}
 --- !u!114 &1131140314 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 804579571850492281, guid: 204c88c888bb80444abdcc22820e97e4, type: 3}
