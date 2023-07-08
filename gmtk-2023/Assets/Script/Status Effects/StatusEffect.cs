@@ -41,4 +41,9 @@ public class StatusEffect : ScriptableObject
         //something went wrong
         return -1;
     }
+
+    public int getAmountOfStack()
+    {
+        return amountOfStack;
+    }
 }

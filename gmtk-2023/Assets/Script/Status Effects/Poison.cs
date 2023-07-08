@@ -21,4 +21,9 @@ public class Poison : StatusEffect
 
         currentEffect[indexToAdd].addStack(amountOfPoison);
     }
+
+    public int calculateDamage()
+    {
+        return (getAmountOfStack() * poisonDamage);
+    }
 }
