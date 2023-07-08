@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class TurnManager : MonoBehaviour
@@ -14,16 +15,20 @@ public class TurnManager : MonoBehaviour
     private EntityPlacer entityPlacer;
     
     [SerializeField]
-    private Entity entity;
+    private List<Entity> enemyEntity;
+
+    [SerializeField]
+    private Entity playerEntity;
 
     [SerializeField]
     private Transform mainCanvas;
 
 
     [SerializeField]
-    private List<GameObject> players;
+    private List<Entity> players;
+
     [SerializeField]
-    private List<GameObject> enemy;
+    private List<Entity> enemy;
 
     [SerializeField]
     private int turnNumber = 0;
@@ -33,26 +38,26 @@ public class TurnManager : MonoBehaviour
     void Start()
     {
         gameState = GameState.Start;
-        //SpawnEverything
-        SpawnMob(true);
-        SpawnMob(false);
+        StartCoroutine(SetUpBattle());
         
         PlayTurn();
     }
-
-    void SpawnMob(bool isPlayerTeam)
+    IEnumerator SetUpBattle()
     {
-        //GameObject newMob = Instantiate(pfCharacter);
-        entityPlacer.PlaceEntity(entity);
-        if (isPlayerTeam)
+
+        entityPlacer.PlaceEntity(playerEntity);
+        players.Add(playerEntity);
+
+        for (int i= 0; i < 4; i++)
         {
-            //enemy.Add(newMob);
+            
+            int randomEnnemy = Random.RandomRange(0, enemyEntity.Count());
+            entityPlacer.PlaceEntity(enemyEntity[randomEnnemy]);
         }
-        else
-        {
-            //players.Add(newMob);
-        }
-        
+
+        yield return new WaitForSeconds(2f);
+
+        gameState = GameState.PlayerTurn;
     }
 
     public void incrementTurnNumber()
@@ -67,19 +72,23 @@ public class TurnManager : MonoBehaviour
     public void PlayTurn()
     {
         gameState = GameState.PlayerTurn;
-        foreach (GameObject entity in players)
+        foreach (Entity entity in players)
         {
+
             //entity.playturn
             turnNumber++;
         }
         gameState = GameState.EnnemyTurn;
-        foreach (GameObject entity in enemy)
+        foreach (Entity entity in enemy)
         {
             //entity.playTurn
             turnNumber++;
         }
     }
+    private void PlayerTurn()
+    {
 
+    }
     public void gameStateChanged(GameState oldValue, GameState newValue)
     {
         Debug.Log("GameState has changed");
