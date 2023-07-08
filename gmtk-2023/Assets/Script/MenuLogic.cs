@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,30 +8,15 @@ public class MenuLogic : MonoBehaviour
     private GameObject Button;
 
     [SerializeField]
-    private GameObject EntityObject;
-
-    [SerializeField]
-    private GameObject TurnManager;
-
-    [SerializeField]
     private MobTurnManager mobTurnManager;
 
     private void Start()
     {
-        mobTurnManager = TurnManager.GetComponent<MobTurnManager>();
-
-    }
-
-    public void SetEntityObject(GameObject currentPlayer)
-    {
-        EntityObject = currentPlayer;
-        
+        //mobTurnManager = TurnManager.GetComponent<MobTurnManager>();
     }
 
     public void SetMenu(Entity entity)
     {
-
-        
         int attackOptionNb = entity.Stats.Attacks.Count;
         
         float width = gameObject.GetComponent<RectTransform>().rect.width;
