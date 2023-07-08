@@ -50,13 +50,17 @@ public class Entity : MonoBehaviour
         //stats.Type;
         for (int i = 0; i < entities.Length; i++)
         {
-            DoAttack(entities[i], attack);
+            if (entities[i].stats.Health > 0)
+            {
+                DoAttack(entities[i], attack);
+            }
+            
         }
     }
     public void DoAttack(Entity entity, Attack attack)
     {
         entity.AddStackStatusEffect(entity, attack);
-        entity.Damage(attack.AttackAmount);
+        entity.Damage(attack.Damage);
         if(attack.SelfDamage != 0)
         {
             Damage(attack.SelfDamage);
