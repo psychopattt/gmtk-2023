@@ -99,10 +99,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75e502ca26245f446a00c73c44fda255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackName: Poison Dagger
-  damage: 50
+  attackName: Poison
+  damage: 0
+  critMultiplier: 2
+  critChance: 5
   targetAmount: 1
-  attackAmount: 3
+  attackAmount: 1
   selfDamage: 0
   statusEffects:
   - {fileID: 558370452109796886}
@@ -120,6 +122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statusName: basicEffect
   amountOfStack: 0
+  stackByX: 10
   poisonDamage: 50
 --- !u!114 &3657844342749007350
 MonoBehaviour:
@@ -135,6 +138,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: Leap
   damage: 300
+  critMultiplier: 2
+  critChance: 10
   targetAmount: 1
   attackAmount: 1
   selfDamage: 9999999
