@@ -19,11 +19,11 @@ public class EntitySlot : MonoBehaviour
         this.entity = entity;
         spriteRenderer.sprite = entity.Stats.Sprite;
         
-        SubscribeToEvents();
+        AddEventListeners();
         PlayEnterAnimation();
     }
 
-    private void SubscribeToEvents()
+    private void AddEventListeners()
     {
         entity.OnDeath += Clear;
         entity.OnHealthLost += PlayHealthLostAnimation;
@@ -34,13 +34,13 @@ public class EntitySlot : MonoBehaviour
     {
         if (entity != null)
         {
-            UnsubscribeFromEvents();
+            RemoveEventListeners();
             PlayExitAnimation();
             entity = null;
         }
     }
 
-    private void UnsubscribeFromEvents()
+    private void RemoveEventListeners()
     {
         entity.OnDeath -= Clear;
         entity.OnHealthLost -= PlayHealthGainedAnimation;
