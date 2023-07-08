@@ -8,7 +8,17 @@ public abstract class StatusEffect : MonoBehaviour
     [SerializeField]
     private string statusName = "basicEffect";
     [SerializeField]
-    private int amountOfStack = 50;
+    private int amountOfStack = 0;
+    [SerializeField]
+    private int stackByX = 0;
+
+
+    public int StackByX
+    {
+        get => stackByX;
+        set => stackByX = value;
+    }
+
     public string getStatusName()
     {
         return statusName;
@@ -26,7 +36,7 @@ public abstract class StatusEffect : MonoBehaviour
     {
         return amountOfStack;
     }
-
+    
     public bool DoesStatusAlreadyExist(List<StatusEffect> currentEffect, StatusEffect EffectToSearch)
     {
         foreach (StatusEffect effect in currentEffect)

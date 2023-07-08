@@ -75,9 +75,9 @@ public class Entity : MonoBehaviour
         {
             for (int y = 0; y < entity.stats.ListStatuesEffect.Count(); y++)
             {
-                if (attack.StatusEffects[i].getStatusName() == entity.stats.ListStatuesEffect[i].getStatusName())
+                if (attack.StatusEffects[i].getStatusName() == entity.Stats.ListStatuesEffect[i].getStatusName())
                 {
-                    entity.stats.ListStatuesEffect[i].addStack(attack.StatusEffects[i].getStack());
+                    entity.stats.ListStatuesEffect[i].addStack(attack.StatusEffects[i].StackByX);
                 }
             }
         }
