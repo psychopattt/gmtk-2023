@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Entity : MonoBehaviour
@@ -41,6 +42,19 @@ public class Entity : MonoBehaviour
             else
                 OnHealthGained?.Invoke(currentHealth);
         }
+    }
+
+    public void Attack(List<Entity> entities, Attack attack)
+    {
+        //stats.Type;
+        for (int i = 0; i < entities.Count; i++)
+        {
+            DoAttack(entities[i], attack);
+        }
+    }
+    public void DoAttack(Entity entity, Attack attack)
+    {
+        entity.Damage(attack.AttackAmount);
     }
 
     public static bool operator ==(Entity entity1, Entity entity2)
