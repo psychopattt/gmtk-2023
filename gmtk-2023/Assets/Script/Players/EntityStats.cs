@@ -1,8 +1,8 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-[CreateAssetMenu]
-public class ScriptableCharacterStat : ScriptableObject
+public class EntityStats : MonoBehaviour
 {
     [SerializeField] private string displayName;
 
@@ -28,6 +28,14 @@ public class ScriptableCharacterStat : ScriptableObject
         set => sprite = value;
     }
 
+    [SerializeField] private int maxHealth;
+
+    public int MaxHealth
+    {
+        get => maxHealth;
+        set => maxHealth = value;
+    }
+
     [SerializeField] private int health;
 
     public int Health
@@ -42,6 +50,16 @@ public class ScriptableCharacterStat : ScriptableObject
     {
         get => attacks;
         set => attacks = value;
+    }
+
+
+
+    [SerializeField] private List<StatusEffect> listStatusEffect;
+
+    public List<StatusEffect> ListStatuesEffect
+    {
+        get => listStatusEffect;
+        set => listStatusEffect = value;
     }
 
     public void Damage(int damageAmount)

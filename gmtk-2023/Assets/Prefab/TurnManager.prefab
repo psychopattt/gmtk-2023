@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4737569475420739912}
   - component: {fileID: -7328327113079127991}
+  - component: {fileID: 5969294891565231784}
+  - component: {fileID: -2126055402089311380}
   m_Layer: 0
   m_Name: TurnManager
   m_TagString: Untagged
@@ -30,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &-7328327113079127991
 MonoBehaviour:
@@ -44,11 +46,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4b07b188e2eb6a4ca8bb31839083af3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameState: 0
-  pfCharacter: {fileID: 945252140855865523, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
-  entityPlacer: {fileID: 0}
-  entity: {fileID: 3429928150251903439, guid: 349e4c1ec50cf1f41871fd29486ecb73, type: 3}
-  mainCanvas: {fileID: 0}
-  players: []
-  enemy: []
-  turnNumber: 0
+--- !u!114 &5969294891565231784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3151041705510112049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eecf5e21368fe7847b4436536c135e0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mobSpawner: {fileID: 0}
+  playerSpawner: {fileID: 0}
+--- !u!114 &-2126055402089311380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3151041705510112049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31e7d6e2531b97745aa07575f0e68a58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mobSpawner: {fileID: 0}
+  playerSpawner: {fileID: 0}

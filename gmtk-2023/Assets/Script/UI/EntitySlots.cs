@@ -5,16 +5,16 @@ public class EntitySlots : MonoBehaviour
     [SerializeField] private GameObject slotPrefab;
 
     private const int slotCount = 10;
-    private EntitySlot[] slots = new EntitySlot[slotCount];
+    private readonly EntitySlot[] slots = new EntitySlot[slotCount];
 
     private void Awake()
     {
-        Vector3 offset = new Vector3();
+        Vector3 offset = new Vector3(0, 0, 100);
 
         for (int i = 0; i < slotCount; i++)
         {
-            offset.x = Random.Range(-100, 100);
-            offset.y += 50;
+            offset.x = Random.Range(-200, 200);
+            offset.y += 100;
             offset.z += 10;
 
             slots[i] = Instantiate(slotPrefab, transform).GetComponent<EntitySlot>();

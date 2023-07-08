@@ -37,7 +37,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 400}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &6242402939289905294
 CanvasRenderer:
@@ -61,6 +61,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Button: {fileID: 1089065564569783179, guid: 4772b8e3c4bde124590b39be28eddc32, type: 3}
   EntityObject: {fileID: 0}
+  TurnManager: {fileID: 3151041705510112049, guid: e90fee425a2489449b604daf2d6bbc1e, type: 3}
+  mobTurnManager: {fileID: 0}
 --- !u!114 &4299946572639609856
 MonoBehaviour:
   m_ObjectHideFlags: 0
