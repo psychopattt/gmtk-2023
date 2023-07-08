@@ -1,7 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu]
-public class Attack : ScriptableObject
+public class Attack : MonoBehaviour
 {
     [SerializeField]
     private string attackName;
@@ -38,8 +37,18 @@ public class Attack : ScriptableObject
     }
 
     [SerializeField]
+    private int selfDamage;
+
+    public int SelfDamage
+    {
+        get { return selfDamage; }
+        set { selfDamage = value; }
+    }
+
+    [SerializeField]
     private StatusEffect[] statusEffects;
 
+    
     public StatusEffect[] StatusEffects
     {
         get { return statusEffects; }

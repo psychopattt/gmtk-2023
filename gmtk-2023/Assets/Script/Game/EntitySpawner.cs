@@ -9,7 +9,8 @@ public class EntitySpawner : MonoBehaviour
 
     [SerializeField] private EntityPlacer entityPlacer;
 
-    [SerializeField] private List<Entity> entityVariants;
+    [SerializeField] private List<GameObject> entityPrefabs;
+    private List<GameObject> currentEntityPrefabs;
     private List<Entity> currentEntities;
 
     public event Action OnAllEntitiesDead;
@@ -17,6 +18,7 @@ public class EntitySpawner : MonoBehaviour
     private void Awake()
     {
         currentEntities = new List<Entity>();
+        currentEntityPrefabs = new List<GameObject>();
     }
 
     public bool HasLivingEntities() => currentEntities.Count > 0;
@@ -27,8 +29,10 @@ public class EntitySpawner : MonoBehaviour
     {
         for (int i = 0; i < UnityEngine.Random.Range(minEntityAmount, maxEntityAmount); i++)
         {
-            int randomEntityIndex = UnityEngine.Random.Range(0, entityVariants.Count);
-            Entity selectedEntity = entityVariants[randomEntityIndex];
+            int selectedEntityIndex = UnityEngine.Random.Range(0, entityPrefabs.Count);
+            GameObject selectedEntityInstance = Instantiate(entityPrefabs[selectedEntityIndex]);
+            Entity selectedEntity = selectedEntityInstance.GetComponent<Entity>();
+            currentEntityPrefabs.Add(selectedEntityInstance);
             currentEntities.Add(selectedEntity);
 
             entityPlacer.PlaceEntity(selectedEntity);
@@ -38,6 +42,7 @@ public class EntitySpawner : MonoBehaviour
 
     public Entity GetEntity(int entityIndex)
     {
+        Debug.Log(entityIndex);
         return currentEntities[entityIndex];
     }
 
@@ -53,7 +58,11 @@ public class EntitySpawner : MonoBehaviour
 
     private void HandleEntityDeath(Entity entity)
     {
-        currentEntities.Remove(entity);
+        int entityIndex = currentEntities.IndexOf(entity);
+        currentEntities.RemoveAt(entityIndex);
+
+        Destroy(currentEntityPrefabs[entityIndex]);
+        currentEntityPrefabs.RemoveAt(entityIndex);
 
         if (currentEntities.Count == 0)
             OnAllEntitiesDead?.Invoke();

@@ -1,15 +1,18 @@
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 
 public abstract class StatusEffect : MonoBehaviour
 {
-   [SerializeField]
-    private string name = "basicEffect";
     [SerializeField]
-    private int amountOfStack = 0;
+    private string statusName = "basicEffect";
+    [SerializeField]
+    private int amountOfStack = 50;
+    public string getStatusName()
+    {
+        return statusName;
+    }
 
     public void addStack(int stack)
     {

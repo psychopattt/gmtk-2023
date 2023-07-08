@@ -14,7 +14,9 @@ public class Entity : MonoBehaviour
 
     void Start()
     {
-        
+        stats.ListStatuesEffect.Add(gameObject.AddComponent<Poison>());
+        stats.ListStatuesEffect.Add(gameObject.AddComponent<Blind>());
+        stats.ListStatuesEffect.Add(gameObject.AddComponent<Weaken>());
     }
 
     void Update()
@@ -32,7 +34,7 @@ public class Entity : MonoBehaviour
         stats.Damage(damageAmount);
         int currentHealth = stats.Health;
 
-        if (currentHealth < 0)
+        if (currentHealth <= 0)
         {
             OnDeath?.Invoke();
         }
@@ -50,13 +52,21 @@ public class Entity : MonoBehaviour
         //stats.Type;
         for (int i = 0; i < entities.Length; i++)
         {
-            DoAttack(entities[i], attack);
+            if (entities[i].stats.Health > 0)
+            {
+                DoAttack(entities[i], attack);
+            }
+            
         }
     }
     public void DoAttack(Entity entity, Attack attack)
     {
         entity.AddStackStatusEffect(entity, attack);
-        entity.Damage(attack.AttackAmount);
+        entity.Damage(attack.Damage);
+        if(attack.SelfDamage != 0)
+        {
+            Damage(attack.SelfDamage);
+        }
     }
     public void AddStackStatusEffect(Entity entity, Attack attack)
     {
@@ -65,7 +75,7 @@ public class Entity : MonoBehaviour
         {
             for (int y = 0; y < entity.stats.ListStatuesEffect.Count(); y++)
             {
-                if (attack.StatusEffects[i].name == entity.stats.ListStatuesEffect[i].name)
+                if (attack.StatusEffects[i].getStatusName() == entity.stats.ListStatuesEffect[i].getStatusName())
                 {
                     entity.stats.ListStatuesEffect[i].addStack(attack.StatusEffects[i].getStack());
                 }

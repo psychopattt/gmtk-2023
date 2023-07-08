@@ -28,6 +28,14 @@ public class EntityStats : MonoBehaviour
         set => sprite = value;
     }
 
+    [SerializeField] private int maxHealth;
+
+    public int MaxHealth
+    {
+        get => maxHealth;
+        set => maxHealth = value;
+    }
+
     [SerializeField] private int health;
 
     public int Health
