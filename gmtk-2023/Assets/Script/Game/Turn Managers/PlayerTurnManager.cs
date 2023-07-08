@@ -60,20 +60,20 @@ public class PlayerTurnManager : MonoBehaviour
     {
         if (!HasLost())
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.3f);
 
             Entity currentEntity = playerSpawner.GetEntity(turnNumber);
             currentEntity.ApplyStartTurnEffect();
         }
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
     }
 
     private IEnumerator Attack()
     {
         if (!HasLost())
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.3f);
 
             Entity currentEntity = playerSpawner.GetEntity(turnNumber);
             Attack selectedAttack = currentEntity.Stats.Attacks[UnityEngine.Random.Range(0, currentEntity.Stats.Attacks.Count)];
@@ -82,6 +82,6 @@ public class PlayerTurnManager : MonoBehaviour
             currentEntity.Attack(possibleTargets, selectedAttack);
         }
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
     }
 }

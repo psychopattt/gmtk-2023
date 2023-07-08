@@ -13,8 +13,8 @@ public class EntitySlots : MonoBehaviour
 
         for (int i = 0; i < slotCount; i++)
         {
-            offset.x = Random.Range(-100, 100);
-            offset.y += 50;
+            offset.x = Random.Range(-200, 200);
+            offset.y += 100;
             offset.z += 10;
 
             slots[i] = Instantiate(slotPrefab, transform).GetComponent<EntitySlot>();

@@ -28,7 +28,6 @@ public class MobTurnManager : MonoBehaviour
 
     public void ActivateUserButtons()
     {
-        Entity test = playerSpawner.GetEntity(turnNumber);
         menuLogic.SetMenu(playerSpawner.GetEntity(turnNumber));
         // TODO activate UI controls for the mob currently playing
     }
