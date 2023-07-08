@@ -1,11 +1,11 @@
 using System;
-using System.Collections;
 using UnityEngine;
 
 public class MobTurnManager : MonoBehaviour
 {
-    [SerializeField] EntitySpawner mobSpawner;
-    [SerializeField] EntitySpawner playerSpawner;
+    [SerializeField] private MenuLogic menuLogic;
+    [SerializeField] private EntitySpawner mobSpawner;
+    [SerializeField] private EntitySpawner playerSpawner;
     private int turnNumber = 0;
 
     public event Action OnEntityTurnEnded;
@@ -16,20 +16,20 @@ public class MobTurnManager : MonoBehaviour
         if (!mobSpawner.HasLivingEntities())
             mobSpawner.SpawnEntities();
 
-        StartCoroutine(ApplyStatusEffects());
+        ApplyStatusEffects();
         ActivateUserButtons();
     }
 
-    private IEnumerator ApplyStatusEffects()
+    private void ApplyStatusEffects()
     {
         Entity currentEntity = playerSpawner.GetEntity(turnNumber);
-        // TODO currentEntity.ApplyStartTurnEffects();
-
-        yield return new WaitForSeconds(2);
+        currentEntity.ApplyStartTurnEffect();
     }
 
     public void ActivateUserButtons()
     {
+        Entity test = playerSpawner.GetEntity(turnNumber);
+        menuLogic.SetMenu(playerSpawner.GetEntity(turnNumber));
         // TODO activate UI controls for the mob currently playing
     }
 

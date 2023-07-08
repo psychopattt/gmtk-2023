@@ -49,21 +49,21 @@ public class EntitySlot : MonoBehaviour
 
     private void PlayEnterAnimation()
     {
-        // TODO
+        // TODO entity slot EnterAnimation
     }
 
     private void PlayExitAnimation()
     {
-        // TODO
+        // TODO entity slot ExitAnimation
     }
 
     private void PlayHealthGainedAnimation(int currentHealth)
     {
-        // TODO
+        // TODO entity slot HealthGainedAnimation
     }
 
     private void PlayHealthLostAnimation(int currentHealth)
     {
-        // TODO
+        // TODO entity slot HealthLostAnimation
     }
 }

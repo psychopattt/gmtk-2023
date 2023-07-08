@@ -24,8 +24,13 @@ public class PlayerTurnManager : MonoBehaviour
     public void NextTurn()
     {
         Initialize();
-        StartCoroutine(ApplyStatusEffects());
-        StartCoroutine(Attack());
+        StartCoroutine(ExecuteTurn());
+    }
+
+    private IEnumerator ExecuteTurn()
+    {
+        yield return ApplyStatusEffects();
+        yield return Attack();
 
         turnNumber++;
 
@@ -42,6 +47,8 @@ public class PlayerTurnManager : MonoBehaviour
         {
             OnEntityTurnEnded?.Invoke();
         }
+
+        yield return new WaitForSeconds(2);
     }
 
     private bool HasLost()
@@ -53,26 +60,28 @@ public class PlayerTurnManager : MonoBehaviour
     {
         if (!HasLost())
         {
+            yield return new WaitForSeconds(0.5f);
+
             Entity currentEntity = playerSpawner.GetEntity(turnNumber);
-            // TODO currentEntity.ApplyStartTurnEffects();
+            currentEntity.ApplyStartTurnEffect();
         }
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
     }
 
     private IEnumerator Attack()
     {
         if (!HasLost())
         {
+            yield return new WaitForSeconds(0.5f);
+
             Entity currentEntity = playerSpawner.GetEntity(turnNumber);
             Attack selectedAttack = currentEntity.Stats.Attacks[UnityEngine.Random.Range(0, currentEntity.Stats.Attacks.Count)];
-            Entity[] possibleTargets = new Entity[selectedAttack.TargetAmount];
+            Entity[] possibleTargets = mobSpawner.GetEntities().ToArray();
 
-            //TODO currentEntity.DoAttack(possibleTargets, selectedAttack);
-
-            yield return new WaitForSeconds(0.5f);
+            currentEntity.Attack(possibleTargets, selectedAttack);
         }
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
     }
 }

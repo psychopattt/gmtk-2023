@@ -41,6 +41,11 @@ public class EntitySpawner : MonoBehaviour
         return currentEntities[entityIndex];
     }
 
+    public List<Entity> GetEntities()
+    {
+        return currentEntities;
+    }
+
     private void AddEventListeners(Entity entity)
     {
         entity.OnDeath += delegate { HandleEntityDeath(entity); };
