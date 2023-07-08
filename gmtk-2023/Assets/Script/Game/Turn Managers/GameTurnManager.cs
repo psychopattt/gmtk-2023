@@ -11,8 +11,8 @@ public class GameTurnManager : MonoBehaviour
     {
         playerTurnManager = GetComponent<PlayerTurnManager>();
         mobTurnManager = GetComponent<MobTurnManager>();
-        playerTurnManager.OnTurnEnded += HandleTurnEnd;
-        mobTurnManager.OnTurnEnded += HandleTurnEnd;
+        playerTurnManager.OnGameTurnEnded += HandleEntityTurnEnd;
+        mobTurnManager.OnGameTurnEnded += HandleEntityTurnEnd;
     }
 
     private void Start()
@@ -29,10 +29,10 @@ public class GameTurnManager : MonoBehaviour
                 InitializeGame();
                 break;
             case GameState.PlayerTurn:
-                playerTurnManager.BeginTurn();
+                playerTurnManager.NextTurn();
                 break;
             case GameState.MobTurn:
-                mobTurnManager.BeginTurn();
+                mobTurnManager.NextTurn();
                 break;
             case GameState.Won:
                 // TODO call some class that handles victory/loss screen
@@ -51,7 +51,7 @@ public class GameTurnManager : MonoBehaviour
         NextTurn();
     }
 
-    private void HandleTurnEnd(GameState nextGameState)
+    private void HandleEntityTurnEnd(GameState nextGameState)
     {
         gameState = nextGameState;
         NextTurn();

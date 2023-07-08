@@ -21,6 +21,8 @@ public class EntitySpawner : MonoBehaviour
 
     public bool HasLivingEntities() => currentEntities.Count > 0;
 
+    public int EntityCount => currentEntities.Count;
+
     public void SpawnEntities()
     {
         for (int i = 0; i < UnityEngine.Random.Range(minEntityAmount, maxEntityAmount); i++)
@@ -32,6 +34,11 @@ public class EntitySpawner : MonoBehaviour
             entityPlacer.PlaceEntity(selectedEntity);
             AddEventListeners(selectedEntity);
         }
+    }
+
+    public Entity GetEntity(int entityIndex)
+    {
+        return currentEntities[entityIndex];
     }
 
     private void AddEventListeners(Entity entity)
