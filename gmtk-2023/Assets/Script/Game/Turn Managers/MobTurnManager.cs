@@ -49,7 +49,7 @@ public class MobTurnManager : MonoBehaviour
     public void Attack(Attack attack)
     {
         // TODO called by the user when using an attack button in the UI
-
+        mobSpawner.GetEntity(turnNumber).Attack(playerSpawner.GetEntities().ToArray(), attack);
         EndTurn();
     }
 
