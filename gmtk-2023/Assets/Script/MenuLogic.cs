@@ -68,8 +68,8 @@ public class MenuLogic : MonoBehaviour
                 rt.anchoredPosition = new Vector2((width / 3) * (i + 1) - (rt.sizeDelta.x / 2), height / 1.5f - (rt.sizeDelta.y / 2));
             }
             GameObject buttonBottom = Instantiate(Button, gameObject.transform);
-            Button buttonComp = buttonBottom.GetComponent<Button>();
-            buttonComp.onClick.AddListener(() => mobTurnManager.Attack(entity.Stats.Attacks[2]));
+            Button buttonBottomComp = buttonBottom.GetComponent<Button>();
+            buttonBottomComp.onClick.AddListener(() => mobTurnManager.Attack(entity.Stats.Attacks[2]));
             buttonBottom.GetComponentInChildren<TMP_Text>().text = entity.Stats.Attacks[2].AttackName;
             RectTransform rtBottom = buttonBottom.GetComponent<RectTransform>();
             rtBottom.anchoredPosition = new Vector2((width / 2) - (rtBottom.sizeDelta.x / 2), (height / 3f) - (rtBottom.sizeDelta.y / 2));
