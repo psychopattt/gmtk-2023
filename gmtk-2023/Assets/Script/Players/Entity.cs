@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -62,7 +61,16 @@ public class Entity : MonoBehaviour
     public void DoAttack(Entity entity, Attack attack)
     {
         entity.AddStackStatusEffect(entity, attack);
-        entity.Damage(attack.Damage);
+        bool isCrit = UnityEngine.Random.Range(0, 100) < 10;
+        if (isCrit)
+        {
+            entity.Damage(attack.Damage*attack.CritMultiplier);
+        }
+        else
+        {
+            entity.Damage(attack.Damage);
+        }
+        
         if(attack.SelfDamage != 0)
         {
             Damage(attack.SelfDamage);

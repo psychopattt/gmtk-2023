@@ -17,6 +17,14 @@ public class Attack : MonoBehaviour
         get { return damage; }
         set { damage = value; }
     }
+    [SerializeField]
+    private int critMultiplier = 2; // Target multiple enemies
+
+    public int CritMultiplier
+    {
+        get { return critMultiplier; }
+        set { critMultiplier = value; }
+    }
 
     [SerializeField]
     private int targetAmount; // Target multiple enemies
