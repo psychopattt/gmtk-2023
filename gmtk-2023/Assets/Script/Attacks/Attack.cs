@@ -25,6 +25,14 @@ public class Attack : MonoBehaviour
         get { return critMultiplier; }
         set { critMultiplier = value; }
     }
+    [SerializeField]
+    private int critChance = 10; // Target multiple enemies
+
+    public int CritChance
+    {
+        get { return critChance; }
+        set { critChance = value; }
+    }
 
     [SerializeField]
     private int targetAmount; // Target multiple enemies
