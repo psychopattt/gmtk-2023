@@ -81,6 +81,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 351731024190772147, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3657844342749007350}
+    - targetCorrespondingSourceObject: {fileID: 351731024190772147, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6024999265832820769}
   m_SourcePrefab: {fileID: 100100000, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
 --- !u!1 &6139826473357012664 stripped
 GameObject:
@@ -136,11 +139,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75e502ca26245f446a00c73c44fda255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackName: Leap
-  damage: 300
-  critMultiplier: 2
-  critChance: 10
+  attackName: Weaken
+  damage: 0
+  critMultiplier: 1
+  critChance: 5
   targetAmount: 1
   attackAmount: 1
   selfDamage: 9999999
-  statusEffects: []
+  statusEffects:
+  - {fileID: 6024999265832820769}
+--- !u!114 &6024999265832820769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6139826473357012664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff072c64d4768c943965339768b5886a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statusName: weaken
+  amountOfStack: 0
+  stackByX: 5

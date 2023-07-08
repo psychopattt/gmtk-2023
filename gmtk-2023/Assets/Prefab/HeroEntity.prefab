@@ -86,8 +86,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackName: Big Attack
-  damage: 3
-  targetAmount: 5
-  attackAmount: 3
+  damage: 5000
+  critMultiplier: 1
+  critChance: 0
+  targetAmount: 1
+  attackAmount: 1
   selfDamage: 0
   statusEffects: []

@@ -19,10 +19,8 @@ public class Blind : StatusEffect
 
         if (indexToAdd == -1)
         {
-
             this.addStack(amountOfBlind);
             currentEffect.Add(this);
-
         }
 
         currentEffect[indexToAdd].addStack(amountOfBlind);

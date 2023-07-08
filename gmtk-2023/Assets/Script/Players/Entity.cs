@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -48,12 +49,15 @@ public class Entity : MonoBehaviour
 
     public void Attack(Entity[] entities, Attack attack)
     {
+        if (entities.Length == 0) return;
         //stats.Type;
-        for (int i = 0; i < entities.Length; i++)
+        for (int i = 0; i < attack.TargetAmount; i++)
         {
-            if (entities[i].stats.Health > 0)
+            int randomTarget = UnityEngine.Random.Range(0, entities.Length);
+            if (entities[randomTarget].stats.Health > 0)
             {
-                DoAttack(entities[i], attack);
+                
+                DoAttack(entities[randomTarget], attack);
             }
             
         }
@@ -69,13 +73,33 @@ public class Entity : MonoBehaviour
         }
         else
         {
-            entity.Damage(attack.Damage);
+            if (attack.Damage == 5000)
+            {
+                entity.Damage((int)Math.Min((7200 / (1 + ((2 * findWeaken()) / 20))) + 100, 5000));
+            }
+            else { 
+                entity.Damage(attack.Damage); 
+            }
         }
         
         if(attack.SelfDamage != 0)
         {
             Damage(attack.SelfDamage);
         }
+    }
+
+    public int findWeaken()
+    {
+        List<StatusEffect> effectToSearch = stats.ListStatuesEffect;
+
+        foreach (StatusEffect effect in effectToSearch)
+        {
+            if (effect is Weaken)
+            {
+                return effect.getStack();
+            }
+        }
+        return 0;
     }
     public void AddStackStatusEffect(Entity entity, Attack attack)
     {
