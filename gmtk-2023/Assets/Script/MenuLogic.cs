@@ -16,13 +16,13 @@ public class MenuLogic : MonoBehaviour
 
     }
 
-    public void setEntityObject(GameObject currentPlayer)
+    public void SetEntityObject(GameObject currentPlayer)
     {
         EntityObject = currentPlayer;
         
     }
 
-    private void setMenu(Entity entity)
+    public void SetMenu(Entity entity)
     {
 
         
