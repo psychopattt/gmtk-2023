@@ -21,15 +21,11 @@ public class EntityPlacer : MonoBehaviour
     /// </summary>
     public int PlaceEntity(Entity entity)
     {
-        switch (entity.Stats.Type)
-        {
-            case EntityType.Mob:
-                return mobSlots.PlaceEntity(entity);
-            case EntityType.Player:
-                return playerSlots.PlaceEntity(entity);
-        }
-
-        return -1;
+        return entity.Stats.Type switch {
+            EntityType.Mob => mobSlots.PlaceEntity(entity),
+            EntityType.Player => playerSlots.PlaceEntity(entity),
+            _ => -1,
+        };
     }
 
     public void PlaceEntities(IEnumerable<Entity> entities)
@@ -44,17 +40,11 @@ public class EntityPlacer : MonoBehaviour
     /// </summary>
     public int GetEntitySlot(Entity entity)
     {
-        switch (entity.Stats.Type)
-        {
-            case EntityType.Mob:
-                mobSlots.GetEntitySlot(entity);
-                break;
-            case EntityType.Player:
-                playerSlots.GetEntitySlot(entity);
-                break;
-        }
-
-        return -1;
+        return entity.Stats.Type switch {
+            EntityType.Mob => mobSlots.GetEntitySlot(entity),
+            EntityType.Player => playerSlots.GetEntitySlot(entity),
+            _ => -1,
+        };
     }
 
     public void RemoveEntity(Entity entity)

@@ -5,7 +5,7 @@ public class EntitySlots : MonoBehaviour
     [SerializeField] private GameObject slotPrefab;
 
     private const int slotCount = 10;
-    private EntitySlot[] slots = new EntitySlot[slotCount];
+    private readonly EntitySlot[] slots = new EntitySlot[slotCount];
 
     private void Awake()
     {
