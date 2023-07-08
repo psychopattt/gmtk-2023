@@ -37,7 +37,7 @@ public class MenuLogic : MonoBehaviour
             GameObject button = Instantiate(Button, gameObject.transform);
             Button buttonComp = button.GetComponent<Button>();
             buttonComp.onClick.AddListener(() => mobTurnManager.Attack(entity.Stats.Attacks[0]));
-            button.GetComponentInChildren<TextMeshProUGUI>().text = entity.Stats.Attacks[0].AttackName;
+            button.GetComponentInChildren<TMP_Text>().text = entity.Stats.Attacks[0].AttackName;
             RectTransform rt = button.GetComponent<RectTransform>();
             rt.anchoredPosition = new Vector2((width / 2)-(rt.sizeDelta.x/2), (height / 2)- (rt.sizeDelta.y / 2));
         }
@@ -58,12 +58,12 @@ public class MenuLogic : MonoBehaviour
             for (int i =0; i<2; i++)
             {
                 GameObject button = Instantiate(Button, gameObject.transform);
-                button.GetComponentInChildren<Text>().text = entity.Stats.Attacks[i].ToString();
+                button.GetComponentInChildren<TMP_Text>().text = entity.Stats.Attacks[i].AttackName;
                 RectTransform rt = button.GetComponent<RectTransform>();
                 rt.anchoredPosition = new Vector2((width / 3) * (i + 1) - (rt.sizeDelta.x / 2), height / 1.5f - (rt.sizeDelta.y / 2));
             }
             GameObject buttonBottom = Instantiate(Button, gameObject.transform);
-            buttonBottom.GetComponentInChildren<Text>().text = entity.Stats.Attacks[2].ToString();
+            buttonBottom.GetComponentInChildren<TMP_Text>().text = entity.Stats.Attacks[2].AttackName;
             RectTransform rtBottom = buttonBottom.GetComponent<RectTransform>();
             rtBottom.anchoredPosition = new Vector2((width / 2) - (rtBottom.sizeDelta.x / 2), (height / 3f) - (rtBottom.sizeDelta.y / 2));
         }
@@ -72,14 +72,14 @@ public class MenuLogic : MonoBehaviour
             for (int i = 0; i < 2; i++)
             {
                 GameObject button = Instantiate(Button, gameObject.transform);
-                button.GetComponentInChildren<Text>().text = entity.Stats.Attacks[i].ToString();
+                button.GetComponentInChildren<TMP_Text>().text = entity.Stats.Attacks[i].ToString();
                 RectTransform rt = button.GetComponent<RectTransform>();
                 rt.anchoredPosition = new Vector2((width / 3) * (i + 1) - (rt.sizeDelta.x / 2), height / 1.5f - (rt.sizeDelta.y / 2));
             }
             for (int i = 0; i < 2; i++)
             {
                 GameObject button = Instantiate(Button, gameObject.transform);
-                button.GetComponentInChildren<Text>().text = entity.Stats.Attacks[i].ToString();
+                button.GetComponentInChildren<TMP_Text>().text = entity.Stats.Attacks[i].ToString();
                 RectTransform rt = button.GetComponent<RectTransform>();
                 rt.anchoredPosition = new Vector2((width / 3) * (i + 1) - (rt.sizeDelta.x / 2), height / 3.6f - (rt.sizeDelta.y / 2));
             }
