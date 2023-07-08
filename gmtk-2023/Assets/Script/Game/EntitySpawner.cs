@@ -26,6 +26,8 @@ public class EntitySpawner : MonoBehaviour
 
     public int EntityCount => currentEntities.Count;
 
+    public int MaxEntityAmount { get => maxEntityAmount; set => maxEntityAmount = value; }
+
     public void SpawnEntities()
     {
         for (int i = 0; i < UnityEngine.Random.Range(minEntityAmount, maxEntityAmount); i++)

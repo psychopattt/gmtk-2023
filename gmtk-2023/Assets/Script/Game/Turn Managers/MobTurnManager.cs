@@ -1,20 +1,31 @@
 using System;
+using TMPro;
 using UnityEngine;
 
 public class MobTurnManager : MonoBehaviour
 {
+    [SerializeField] private int availableMobCount = 100;
     [SerializeField] private MenuLogic menuLogic;
     [SerializeField] private EntitySpawner mobSpawner;
     [SerializeField] private EntitySpawner playerSpawner;
+    [SerializeField] private TMP_Text mobDeathCount;
     private int turnNumber = 0;
 
     public event Action OnEntityTurnEnded;
     public event Action<GameState> OnGameTurnEnded;
 
+    private void Awake()
+    {
+        mobDeathCount.text = string.Format("{0} Remaining Mobs", availableMobCount);
+    }
+
     public void NextTurn()
     {
         if (!mobSpawner.HasLivingEntities())
             mobSpawner.SpawnEntities();
+
+        mobDeathCount.text = string.Format("{0} Remaining Mobs", availableMobCount - mobSpawner.GetDeathCount());
+        mobSpawner.MaxEntityAmount = Math.Min(mobSpawner.MaxEntityAmount, availableMobCount);
 
         ApplyStatusEffects();
         ActivateUserButtons();
@@ -22,7 +33,7 @@ public class MobTurnManager : MonoBehaviour
 
     private void ApplyStatusEffects()
     {
-        if (mobSpawner.HasLivingEntities())
+        if (mobSpawner.HasLivingEntities() && mobSpawner.GetDeathCount() < availableMobCount)
         {
             Entity currentEntity = mobSpawner.GetEntity(turnNumber);
             currentEntity.ApplyStartTurnEffect();
@@ -57,7 +68,12 @@ public class MobTurnManager : MonoBehaviour
     {
         turnNumber++;
 
-        if (turnNumber >= mobSpawner.EntityCount)
+        if (mobSpawner.GetDeathCount() >= availableMobCount)
+        {
+            OnGameTurnEnded?.Invoke(GameState.Lost);
+            turnNumber = 0;
+        }
+        else if (turnNumber >= mobSpawner.EntityCount)
         {
             OnGameTurnEnded?.Invoke(GameState.PlayerTurn);
             turnNumber = 0;
