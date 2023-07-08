@@ -5,11 +5,7 @@ using UnityEngine;
 public class TurnManager : MonoBehaviour
 {
     [SerializeField]
-    private GameState gameState
-    {
-        get { return gameState; }
-        set { gameStateChanged(gameState, value); gameState = value; }
-    }
+    private GameState gameState;
 
     [SerializeField]
     private GameObject pfCharacter;
