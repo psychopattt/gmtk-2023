@@ -425,14 +425,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -7328327113079127991, guid: e90fee425a2489449b604daf2d6bbc1e, type: 3}
-      propertyPath: mobTurnManager
-      value: 
-      objectReference: {fileID: 1680638618}
-    - target: {fileID: -7328327113079127991, guid: e90fee425a2489449b604daf2d6bbc1e, type: 3}
-      propertyPath: playerTurnManager
-      value: 
-      objectReference: {fileID: 1680638619}
     - target: {fileID: -6759583391483118959, guid: e90fee425a2489449b604daf2d6bbc1e, type: 3}
       propertyPath: entityPlacer
       value: 
@@ -494,28 +486,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e90fee425a2489449b604daf2d6bbc1e, type: 3}
---- !u!114 &1680638618 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: -2126055402089311380, guid: e90fee425a2489449b604daf2d6bbc1e, type: 3}
-  m_PrefabInstance: {fileID: 1680638617}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31e7d6e2531b97745aa07575f0e68a58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1680638619 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5969294891565231784, guid: e90fee425a2489449b604daf2d6bbc1e, type: 3}
-  m_PrefabInstance: {fileID: 1680638617}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eecf5e21368fe7847b4436536c135e0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1766387127
 PrefabInstance:
   m_ObjectHideFlags: 0
