@@ -3,8 +3,8 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
-[CreateAssetMenu]
-public class StatusEffect : ScriptableObject
+
+public abstract class StatusEffect : MonoBehaviour
 {
    [SerializeField]
     private string name = "basicEffect";

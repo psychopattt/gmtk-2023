@@ -4,7 +4,7 @@ using UnityEngine;
 public class Entity : MonoBehaviour
 {
     [SerializeField]
-    private ScriptableCharacterStat stats;
+    private EntityStats stats;
 
     public event Action<int> OnHealthLost;
     public event Action<int> OnHealthGained;
@@ -20,7 +20,7 @@ public class Entity : MonoBehaviour
         
     }
 
-    public ScriptableCharacterStat Stats
+    public EntityStats Stats
     {
         get => stats;
     }

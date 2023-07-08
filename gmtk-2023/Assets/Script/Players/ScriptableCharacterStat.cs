@@ -2,8 +2,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-[CreateAssetMenu]
-public class ScriptableCharacterStat : ScriptableObject
+public class EntityStats : MonoBehaviour
 {
     [SerializeField] private string displayName;
 
