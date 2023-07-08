@@ -11,6 +11,12 @@ public class TurnManager : MonoBehaviour
     private GameObject pfCharacter;
 
     [SerializeField]
+    private EntityPlacer entityPlacer;
+    
+    [SerializeField]
+    private Entity entity;
+
+    [SerializeField]
     private Transform mainCanvas;
 
 
@@ -30,20 +36,21 @@ public class TurnManager : MonoBehaviour
         //SpawnEverything
         SpawnMob(true);
         SpawnMob(false);
-
+        
         PlayTurn();
     }
 
     void SpawnMob(bool isPlayerTeam)
     {
-        GameObject newMob = Instantiate(pfCharacter);
+        //GameObject newMob = Instantiate(pfCharacter);
+        entityPlacer.PlaceEntity(entity);
         if (isPlayerTeam)
         {
-            enemy.Add(newMob);
+            //enemy.Add(newMob);
         }
         else
         {
-            players.Add(newMob);
+            //players.Add(newMob);
         }
         
     }
