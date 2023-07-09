@@ -162,7 +162,6 @@ MonoBehaviour:
   HeavyBullshitOn: {fileID: -8603492675214252686, guid: 787fc03604fbc5d418afb3fc7e792ac9, type: 2}
   UpbeatSlamOn: {fileID: 2823928186751792134, guid: 787fc03604fbc5d418afb3fc7e792ac9, type: 2}
   NoMusic: {fileID: 6612845716209025944, guid: 787fc03604fbc5d418afb3fc7e792ac9, type: 2}
-  healthState: 0
 --- !u!114 &4482170723791830710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,7 +175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackName: Cleave
-  damage: 5000
+  damage: 99999
   critMultiplier: 2
   critChance: 0
   targetAmount: 20
