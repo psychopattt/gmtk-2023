@@ -13,11 +13,19 @@ public class EntitySlots : MonoBehaviour
 
         for (int i = 0; i < slotCount; i++)
         {
-            offset.y += 100;
+            offset.y += 95;
             offset.z += 10;
 
             slots[i] = Instantiate(slotPrefab, transform).GetComponent<EntitySlot>();
             slots[i].SetPosition(slots[i].transform.position + offset);
+        }
+    }
+
+    public void SetOffset(Vector3 offset)
+    {
+        foreach (EntitySlot slot in slots)
+        {
+            slot.SetPosition(slot.GetPosition() + offset);
         }
     }
 
