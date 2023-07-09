@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackName: Poison Dagger
-  damage: 150
+  damage: 300
   critMultiplier: 2
   critChance: 7
   targetAmount: 1
@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackName: Leap
-  damage: 300
+  damage: 450
   critMultiplier: 10
   critChance: 15
   targetAmount: 1
