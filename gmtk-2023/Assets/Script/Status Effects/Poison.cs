@@ -9,7 +9,7 @@ public class Poison : StatusEffect
         setStatuesName("poison");
     }
     [SerializeField]
-    private int poisonDamage = 70;
+    private int poisonDamage = 150;
 
     public void applyStack(Entity target, int amountOfPoison)
     {
@@ -28,6 +28,6 @@ public class Poison : StatusEffect
 
     public int calculateDamage()
     {
-        return (getAmountOfStack()*getAmountOfStack() * poisonDamage);
+        return (getAmountOfStack() * poisonDamage);
     }
 }
