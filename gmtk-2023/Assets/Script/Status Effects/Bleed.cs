@@ -30,9 +30,11 @@ public class Bleed : StatusEffect
     public int calculateBleedDamage(Entity target)
     {
         int amountOfHit = getStack() / 100;
-
+        if (amountOfHit > 5){
+            amountOfHit = 5;
+        }
         //applyStack(target, amountOfHit * 100);
 
-        return (555 * amountOfHit);
+        return (2000 * amountOfHit);
     }
 }
