@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 5913720683031261089}
   - component: {fileID: 7460646325904850602}
   - component: {fileID: 1706968441221144050}
+  - component: {fileID: 6308399746689775888}
   m_Layer: 0
   m_Name: Entity Slot
   m_TagString: Untagged
@@ -139,6 +140,7 @@ MonoBehaviour:
   healthBar: {fileID: 2356371112965605703}
   damageNumberPrefab: {fileID: 7676156332035721942, guid: fd86f39c9e917f04b918972d36796eab, type: 3}
   spriteRenderer: {fileID: 1706968441221144050}
+  animator: {fileID: 6308399746689775888}
 --- !u!212 &1706968441221144050
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -191,6 +193,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &6308399746689775888
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3203453443209676912}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3791988431563940410
 GameObject:
   m_ObjectHideFlags: 0
