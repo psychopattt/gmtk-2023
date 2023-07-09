@@ -198,4 +198,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statusName: strength
   amountOfStack: 0
-  stackByX: 2
+  stackByX: 5
