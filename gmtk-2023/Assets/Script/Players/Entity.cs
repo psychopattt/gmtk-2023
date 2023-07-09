@@ -8,6 +8,9 @@ public class Entity : MonoBehaviour
     [SerializeField]
     private EntityStats stats;
 
+    [SerializeField]
+    private BossMusic bossMusic;
+
     public event Action<int> OnHealthLost;
     public event Action<int> OnHealthGained;
     public event Action OnDeath;

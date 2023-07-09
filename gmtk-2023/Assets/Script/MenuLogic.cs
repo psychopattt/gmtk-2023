@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class MenuLogic : MonoBehaviour
@@ -20,6 +21,17 @@ public class MenuLogic : MonoBehaviour
         {
             Destroy(button.gameObject);
         }
+    }
+    //https://discussions.unity.com/t/how-do-you-add-an-ui-eventtrigger-by-script/125158/3
+    public void addInfo(EventTrigger trigger,
+                        EventTriggerType eventType,
+                        System.Action<BaseEventData> callback)
+    {
+        EventTrigger.Entry entry = new EventTrigger.Entry();
+        entry.eventID = eventType;
+        entry.callback = new EventTrigger.TriggerEvent();
+        entry.callback.AddListener(new UnityEngine.Events.UnityAction<BaseEventData>(callback));
+        trigger.triggers.Add(entry);
     }
 
     public void SetMenu(Entity entity)
