@@ -28,6 +28,6 @@ public class Poison : StatusEffect
 
     public int calculateDamage()
     {
-        return (getAmountOfStack() * poisonDamage);
+        return (getAmountOfStack()*getAmountOfStack() * poisonDamage);
     }
 }
