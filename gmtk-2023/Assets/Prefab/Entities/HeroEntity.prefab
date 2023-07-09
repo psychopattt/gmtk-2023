@@ -118,8 +118,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a24c69e7b17cf1649b618ddb2344ec7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FinalDanceOn: {fileID: 0}
-  HeavyBullshitOn: {fileID: 0}
-  UpbeatSlamOn: {fileID: 0}
-  NoMusic: {fileID: 0}
+  FinalDanceOn: {fileID: 24500006, guid: 787fc03604fbc5d418afb3fc7e792ac9, type: 2}
+  HeavyBullshitOn: {fileID: -8603492675214252686, guid: 787fc03604fbc5d418afb3fc7e792ac9, type: 2}
+  UpbeatSlamOn: {fileID: 2823928186751792134, guid: 787fc03604fbc5d418afb3fc7e792ac9, type: 2}
+  NoMusic: {fileID: 6612845716209025944, guid: 787fc03604fbc5d418afb3fc7e792ac9, type: 2}
   healthState: 0

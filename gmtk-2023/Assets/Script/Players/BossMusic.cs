@@ -24,10 +24,10 @@ public class BossMusic : MonoBehaviour
     public void updateSound(int currentHealth)
     {
 
-        if (currentHealth < 330000 && healthState != HealthState.LowHealth) {
+        if (currentHealth < 330000 ) {
             healthState = HealthState.LowHealth;
             HeavyBullshitOn.TransitionTo(4);
-        } else if (currentHealth < 660000 && healthState != HealthState.MediumHealth) {
+        } else if (currentHealth < 660000) {
             healthState = HealthState.MediumHealth;
             UpbeatSlamOn.TransitionTo(4);
         }
