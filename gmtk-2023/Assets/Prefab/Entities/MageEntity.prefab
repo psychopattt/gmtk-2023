@@ -202,8 +202,8 @@ MonoBehaviour:
   damage: 1
   critMultiplier: 500000
   critChance: 1
-  targetAmount: 0
-  attackAmount: 0
+  targetAmount: 1
+  attackAmount: 1
   selfDamage: 0
   statusEffects:
   - {fileID: 2383265235926606199}
