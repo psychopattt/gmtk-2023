@@ -30,7 +30,7 @@ public class EntitySpawner : MonoBehaviour
 
     public void SpawnEntities()
     {
-        for (int i = 0; i < UnityEngine.Random.Range(minEntityAmount, maxEntityAmount); i++)
+        for (int i = 0; i < UnityEngine.Random.Range(minEntityAmount, maxEntityAmount + 1); i++)
         {
             int selectedEntityIndex = UnityEngine.Random.Range(0, entityPrefabs.Count);
             GameObject selectedEntityInstance = Instantiate(entityPrefabs[selectedEntityIndex]);
