@@ -57,6 +57,8 @@ public class EntitySlot : MonoBehaviour
         this.position = position;
     }
 
+    public Vector3 GetPosition() => position;
+
     private void AddEventListeners()
     {
         entity.OnDeath += Clear;
