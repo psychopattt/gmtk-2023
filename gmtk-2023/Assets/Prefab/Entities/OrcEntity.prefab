@@ -183,7 +183,7 @@ MonoBehaviour:
   statusEffects:
   - {fileID: -7886874234244565727}
   soundEffect: {fileID: 4279749747556510932}
-  sfx: {fileID: 0}
+  sfx: {fileID: 8300000, guid: 6e077a0f3efc2b64d86fb5f9ad00d52e, type: 3}
 --- !u!114 &-7886874234244565727
 MonoBehaviour:
   m_ObjectHideFlags: 0
