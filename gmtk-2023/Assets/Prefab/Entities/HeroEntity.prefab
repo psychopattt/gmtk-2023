@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7687692517520151007, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 4805482073009386711, guid: db0601a2e5c4b714988cc3c0731709e0, type: 2}
     - target: {fileID: 7981993711418276127, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -93,3 +97,5 @@ MonoBehaviour:
   attackAmount: 1
   selfDamage: 0
   statusEffects: []
+  soundEffect: {fileID: 0}
+  sfx: {fileID: 0}
