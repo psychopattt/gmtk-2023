@@ -200,7 +200,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: Bleed
   damage: 1
-  critMultiplier: 500000
+  critMultiplier: 10000
   critChance: 1
   targetAmount: 1
   attackAmount: 1

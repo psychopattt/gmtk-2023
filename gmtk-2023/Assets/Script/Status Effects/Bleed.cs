@@ -33,6 +33,6 @@ public class Bleed : StatusEffect
 
         applyStack(target, amountOfHit * 100);
 
-        return (5550 * amountOfHit);
+        return (555 * amountOfHit);
     }
 }

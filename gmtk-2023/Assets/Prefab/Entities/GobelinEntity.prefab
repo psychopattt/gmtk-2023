@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackName: Poison Dagger
-  damage: 50
+  damage: 150
   critMultiplier: 2
   critChance: 7
   targetAmount: 1
