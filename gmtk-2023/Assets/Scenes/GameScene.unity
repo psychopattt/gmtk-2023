@@ -1321,6 +1321,10 @@ PrefabInstance:
       propertyPath: playerSpawner
       value: 
       objectReference: {fileID: 1766387130}
+    - target: {fileID: -2126055402089311380, guid: e90fee425a2489449b604daf2d6bbc1e, type: 3}
+      propertyPath: availableMobCount
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 3151041705510112049, guid: e90fee425a2489449b604daf2d6bbc1e, type: 3}
       propertyPath: m_Name
       value: TurnManager
