@@ -172,7 +172,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -4168670012383239901, guid: 787fc03604fbc5d418afb3fc7e792ac9, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 7c8751f20e8f6424a82a82fef83fc755, type: 3}
+  m_audioClip: {fileID: 8300000, guid: fcacbe53d12812d44b6dca7da2e10127, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.304
   m_Pitch: 1
@@ -1321,6 +1321,10 @@ PrefabInstance:
       propertyPath: playerSpawner
       value: 
       objectReference: {fileID: 1766387130}
+    - target: {fileID: -2126055402089311380, guid: e90fee425a2489449b604daf2d6bbc1e, type: 3}
+      propertyPath: availableMobCount
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 3151041705510112049, guid: e90fee425a2489449b604daf2d6bbc1e, type: 3}
       propertyPath: m_Name
       value: TurnManager
