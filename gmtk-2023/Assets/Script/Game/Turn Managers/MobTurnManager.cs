@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MobTurnManager : MonoBehaviour
 {
-    [SerializeField] private int availableMobCount = 100;
+    [SerializeField] private int availableMobCount = 50;
     [SerializeField] private MenuLogic menuLogic;
     [SerializeField] private EntitySpawner mobSpawner;
     [SerializeField] private EntitySpawner playerSpawner;
