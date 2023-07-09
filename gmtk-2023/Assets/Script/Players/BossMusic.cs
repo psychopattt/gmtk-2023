@@ -10,9 +10,9 @@ public class BossMusic : MonoBehaviour
 
     public void updateSound(int currentHealth)
     {
-        if (currentHealth < 330000 ) {
+        if (currentHealth < 500000 ) {
             HeavyBullshitOn.TransitionTo(4);
-        } else if (currentHealth < 660000) {
+        } else if (currentHealth < 750000) {
             UpbeatSlamOn.TransitionTo(4);
         }
 
