@@ -35,9 +35,7 @@ public class MenuLogic : MonoBehaviour
     }
 
     public void SetMenu(Entity entity)
-    {
-        Debug.Log("Set Menu");
-        
+    {        
         deleteAllButton();
 
         int attackOptionNb = entity.Stats.Attacks.Count;
