@@ -64,10 +64,14 @@ public class EntitySpawner : MonoBehaviour
     {
         deathCount++;
         int entityIndex = currentEntities.IndexOf(entity);
-        currentEntities.RemoveAt(entityIndex);
 
-        Destroy(currentEntityPrefabs[entityIndex]);
-        currentEntityPrefabs.RemoveAt(entityIndex);
+        if (entityIndex != -1)
+        {
+            currentEntities.RemoveAt(entityIndex);
+
+            Destroy(currentEntityPrefabs[entityIndex]);
+            currentEntityPrefabs.RemoveAt(entityIndex);
+        }
 
         if (currentEntities.Count == 0)
             OnAllEntitiesDead?.Invoke();
