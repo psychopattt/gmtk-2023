@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class EntityStats : MonoBehaviour
@@ -19,6 +18,15 @@ public class EntityStats : MonoBehaviour
     {
         get => type;
         set => type = value;
+    }
+
+
+    [SerializeField] private RuntimeAnimatorController animator;
+
+    public RuntimeAnimatorController Animator
+    {
+        get => animator;
+        set => animator = value;
     }
 
     [SerializeField] private Sprite sprite;
