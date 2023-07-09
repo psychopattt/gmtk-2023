@@ -7,6 +7,7 @@ public class EntitySlot : MonoBehaviour
     [SerializeField] private GameObject damageNumberPrefab;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Animator animator;
+    [SerializeField] private Image arrow;
 
     private PlayerHealthBar playerHealthBar;
     private Entity entity = null;
@@ -15,6 +16,7 @@ public class EntitySlot : MonoBehaviour
 
     private void Awake()
     {
+        ResetMobHint();
         healthBar.gameObject.SetActive(false);
         healthBarCanvas = healthBar.GetComponentInParent<Canvas>();
         healthBarCanvas.worldCamera = GameObject.FindGameObjectWithTag("UI Camera").GetComponent<Camera>();
@@ -24,6 +26,16 @@ public class EntitySlot : MonoBehaviour
     public bool IsAvailable() => entity == null;
 
     public Entity GetEntity() => entity;
+
+    public void SetMobHint()
+    {
+        arrow.gameObject.SetActive(true);
+    }
+
+    public void ResetMobHint()
+    {
+        arrow.gameObject.SetActive(false);
+    }
 
     public void SetEntity(Entity entity)
     {
@@ -77,6 +89,7 @@ public class EntitySlot : MonoBehaviour
     {
         if (entity != null)
         {
+            ResetMobHint();
             RemoveEventListeners();
             PlayExitAnimation();
             entity = null;
