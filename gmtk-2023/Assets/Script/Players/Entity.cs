@@ -20,6 +20,7 @@ public class Entity : MonoBehaviour
         stats.ListStatuesEffect.Add(gameObject.AddComponent<Poison>());
         stats.ListStatuesEffect.Add(gameObject.AddComponent<Blind>());
         stats.ListStatuesEffect.Add(gameObject.AddComponent<Weaken>());
+        stats.ListStatuesEffect.Add(gameObject.AddComponent<Strength>());
     }
 
     void Update()
@@ -82,8 +83,8 @@ public class Entity : MonoBehaviour
             {
                 entity.Damage((int)Math.Min((7200 / (1 + ((2 * findWeaken()) / 5))) + 100, 5000));
             }
-            else { 
-                entity.Damage(attack.Damage); 
+            else {
+                entity.Damage(attack.Damage+(int)(attack.Damage*0.1f*findStrength(entity))); 
             }
         }
         
@@ -92,7 +93,19 @@ public class Entity : MonoBehaviour
             Damage(attack.SelfDamage);
         }
     }
+    public int findStrength(Entity entity)
+    {
+        List<StatusEffect> effectToSearch = entity.stats.ListStatuesEffect;
 
+        foreach (StatusEffect effect in effectToSearch)
+        {
+            if (effect is Strength)
+            {
+                return effect.getStack();
+            }
+        }
+        return 1;
+    }
     public int findWeaken()
     {
         List<StatusEffect> effectToSearch = stats.ListStatuesEffect;

@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 601250266476128372, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
       propertyPath: health
-      value: 15
+      value: 1900
       objectReference: {fileID: 0}
     - target: {fileID: 601250266476128372, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
       propertyPath: sprite
@@ -22,7 +22,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 88f5bc584dd555c4a9d7c06187d14501, type: 3}
     - target: {fileID: 601250266476128372, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
       propertyPath: maxHealth
-      value: 15
+      value: 1900
       objectReference: {fileID: 0}
     - target: {fileID: 601250266476128372, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
       propertyPath: displayName
@@ -78,6 +78,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 351731024190772147, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
       insertIndex: -1
       addedObject: {fileID: 558370452109796886}
+    - targetCorrespondingSourceObject: {fileID: 351731024190772147, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -6258809655324214757}
   m_SourcePrefab: {fileID: 100100000, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
 --- !u!82 &4279749747556510932 stripped
 AudioSource:
@@ -102,13 +105,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackName: Smash
-  damage: 1900
+  damage: 2000
   critMultiplier: 2
   critChance: 15
   targetAmount: 1
   attackAmount: 1
   selfDamage: 0
-  statusEffects: []
+  statusEffects:
+  - {fileID: -6258809655324214757}
   soundEffect: {fileID: 4279749747556510932}
   sfx: {fileID: 8300000, guid: 3b3ce7bbc89b3144f9d4f6391a11f724, type: 3}
 --- !u!114 &558370452109796886
@@ -127,3 +131,18 @@ MonoBehaviour:
   amountOfStack: 0
   stackByX: 0
   poisonDamage: 50
+--- !u!114 &-6258809655324214757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6139826473357012664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0adc9fac501c9264e9321afcb6961f80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statusName: strength
+  amountOfStack: 0
+  stackByX: 1
