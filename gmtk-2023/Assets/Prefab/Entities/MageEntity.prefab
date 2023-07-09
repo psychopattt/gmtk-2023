@@ -21,6 +21,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 16d5fee9e6e992a4eb314ec1af4dab13, type: 3}
     - target: {fileID: 601250266476128372, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 9100000, guid: 801ddbdf03861cf49aed3d208fbaea2d, type: 2}
+    - target: {fileID: 601250266476128372, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
       propertyPath: maxHealth
       value: 400
       objectReference: {fileID: 0}

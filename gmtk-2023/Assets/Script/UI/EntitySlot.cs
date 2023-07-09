@@ -30,7 +30,10 @@ public class EntitySlot : MonoBehaviour
         this.entity = entity;
 
         if (entity.Stats.Animator != null)
+        {
             animator.runtimeAnimatorController = entity.Stats.Animator;
+            animator.Play(animator.GetCurrentAnimatorStateInfo(0).fullPathHash, -1, Random.Range(0.0f, 1.0f));
+        }
         else
             spriteRenderer.sprite = entity.Stats.Sprite;
 
@@ -78,6 +81,7 @@ public class EntitySlot : MonoBehaviour
             PlayExitAnimation();
             entity = null;
             spriteRenderer.sprite = null;
+            animator.runtimeAnimatorController = null;
             healthBar.gameObject.SetActive(false);
         }
     }
