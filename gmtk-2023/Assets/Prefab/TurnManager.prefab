@@ -72,5 +72,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31e7d6e2531b97745aa07575f0e68a58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  availableMobCount: 100
+  menuLogic: {fileID: 0}
   mobSpawner: {fileID: 0}
   playerSpawner: {fileID: 0}
+  mobDeathCount: {fileID: 0}

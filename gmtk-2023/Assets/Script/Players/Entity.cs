@@ -37,16 +37,14 @@ public class Entity : MonoBehaviour
         stats.Damage(damageAmount);
         int currentHealth = stats.Health;
 
+        if (damageAmount < 0)
+            OnHealthGained?.Invoke(damageAmount);
+        else
+            OnHealthLost?.Invoke(damageAmount);
+
         if (currentHealth <= 0)
         {
             OnDeath?.Invoke();
-        }
-        else
-        {
-            if (damageAmount > 0)
-                OnHealthLost?.Invoke(currentHealth);
-            else
-                OnHealthGained?.Invoke(currentHealth);
         }
     }
 

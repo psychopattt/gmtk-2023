@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class EntitySlot : MonoBehaviour
 {
     [SerializeField] private Slider healthBar;
+    [SerializeField] private DamageNumber damageNumber;
     [SerializeField] private SpriteRenderer spriteRenderer;
 
     private Entity entity = null;
@@ -76,15 +77,15 @@ public class EntitySlot : MonoBehaviour
         // TODO entity slot ExitAnimation
     }
 
-    private void HandleHealthGainedAnimation(int currentHealth)
+    private void HandleHealthGainedAnimation(int damageAmount)
     {
-        // TODO entity slot HealthGainedAnimation
-        healthBar.value = currentHealth / (float)entity.Stats.MaxHealth;
+        healthBar.value = entity.Stats.Health / (float)entity.Stats.MaxHealth;
+        damageNumber.StartAnimation(damageAmount);
     }
 
-    private void HandleHealthLostAnimation(int currentHealth)
+    private void HandleHealthLostAnimation(int damageAmount)
     {
-        // TODO entity slot HealthLostAnimation
-        healthBar.value = currentHealth / (float)entity.Stats.MaxHealth;
+        healthBar.value = entity.Stats.Health / (float)entity.Stats.MaxHealth;
+        damageNumber.StartAnimation(damageAmount);
     }
 }
