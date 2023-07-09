@@ -27,8 +27,14 @@ public class MobTurnManager : MonoBehaviour
         mobDeathCount.text = string.Format("{0} Remaining Mobs", availableMobCount - mobSpawner.GetDeathCount());
         mobSpawner.MaxEntityAmount = Math.Min(mobSpawner.MaxEntityAmount, availableMobCount);
 
+        SetCurrentMobHint();
         ApplyStatusEffects();
         ActivateUserButtons();
+    }
+
+    public void SetCurrentMobHint()
+    {
+        mobSpawner.SetCurrentMobHint(turnNumber);
     }
 
     private void ApplyStatusEffects()

@@ -11,6 +11,11 @@ public class EntityPlacer : MonoBehaviour
         mobSlots.SetOffset(new Vector3(0, -200, 0));
     }
 
+    public void SetCurrentMobHint(Entity currentMob)
+    {
+        mobSlots.SetCurrentMobHint(currentMob);
+    }
+
     public bool HasAvailableSlots(EntityType slotType)
     {
         return slotType switch {

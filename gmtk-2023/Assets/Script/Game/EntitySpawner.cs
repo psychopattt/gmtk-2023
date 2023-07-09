@@ -28,6 +28,11 @@ public class EntitySpawner : MonoBehaviour
 
     public int MaxEntityAmount { get => maxEntityAmount; set => maxEntityAmount = value; }
 
+    public void SetCurrentMobHint(int currentMob)
+    {
+        entityPlacer.SetCurrentMobHint(currentEntities[currentMob]);
+    }
+
     public void SpawnEntities()
     {
         for (int i = 0; i < UnityEngine.Random.Range(minEntityAmount, maxEntityAmount + 1); i++)

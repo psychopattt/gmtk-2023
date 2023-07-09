@@ -21,6 +21,17 @@ public class EntitySlots : MonoBehaviour
         }
     }
 
+    public void SetCurrentMobHint(Entity currentMob)
+    {
+        foreach (EntitySlot slot in slots)
+        {
+            if (slot.GetEntity() == currentMob)
+                slot.SetMobHint();
+            else
+                slot.ResetMobHint();
+        }
+    }
+
     public void SetOffset(Vector3 offset)
     {
         foreach (EntitySlot slot in slots)
