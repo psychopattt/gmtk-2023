@@ -60,8 +60,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Button: {fileID: 1089065564569783179, guid: 4772b8e3c4bde124590b39be28eddc32, type: 3}
-  EntityObject: {fileID: 0}
-  TurnManager: {fileID: 3151041705510112049, guid: e90fee425a2489449b604daf2d6bbc1e, type: 3}
   mobTurnManager: {fileID: 0}
 --- !u!114 &4299946572639609856
 MonoBehaviour:
@@ -83,8 +81,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 7a8ea07e61f69f045b1449e7e5f66f62, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4

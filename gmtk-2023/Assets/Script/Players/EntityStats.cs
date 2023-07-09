@@ -5,6 +5,7 @@ using UnityEngine;
 public class EntityStats : MonoBehaviour
 {
     [SerializeField] private string displayName;
+    
 
     public string DisplayName
     {
@@ -28,7 +29,7 @@ public class EntityStats : MonoBehaviour
         set => sprite = value;
     }
 
-    [SerializeField] private int maxHealth;
+    [SerializeField] public int maxHealth; //im sorry but this makes the health bar work
 
     public int MaxHealth
     {
@@ -36,7 +37,7 @@ public class EntityStats : MonoBehaviour
         set => maxHealth = value;
     }
 
-    [SerializeField] private int health;
+    [SerializeField] public int health; //im sorry but this makes the health bar work
 
     public int Health
     {
@@ -65,5 +66,6 @@ public class EntityStats : MonoBehaviour
     public void Damage(int damageAmount)
     {
         Health -= damageAmount;
+        
     }
 }
