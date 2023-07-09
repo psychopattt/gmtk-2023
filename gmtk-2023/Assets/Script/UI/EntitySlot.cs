@@ -6,6 +6,7 @@ public class EntitySlot : MonoBehaviour
     [SerializeField] private Slider healthBar;
     [SerializeField] private GameObject damageNumberPrefab;
     [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Animator animator;
 
     private PlayerHealthBar playerHealthBar;
     private Entity entity = null;
@@ -27,7 +28,11 @@ public class EntitySlot : MonoBehaviour
     public void SetEntity(Entity entity)
     {
         this.entity = entity;
-        spriteRenderer.sprite = entity.Stats.Sprite;
+
+        if (entity.Stats.Animator != null)
+            animator.runtimeAnimatorController = entity.Stats.Animator;
+        else
+            spriteRenderer.sprite = entity.Stats.Sprite;
 
         if (entity.Stats.Type == EntityType.Mob)
         {
