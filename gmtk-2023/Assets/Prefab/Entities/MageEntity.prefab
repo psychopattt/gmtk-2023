@@ -30,7 +30,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 601250266476128372, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
       propertyPath: attacks.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 601250266476128372, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
       propertyPath: attacks.Array.data[0]
@@ -40,6 +40,10 @@ PrefabInstance:
       propertyPath: attacks.Array.data[1]
       value: 
       objectReference: {fileID: 3657844342749007350}
+    - target: {fileID: 601250266476128372, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
+      propertyPath: attacks.Array.data[2]
+      value: 
+      objectReference: {fileID: 9054587489638983948}
     - target: {fileID: 601250266476128372, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
       propertyPath: listStatusEffect.Array.size
       value: 0
@@ -88,6 +92,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 351731024190772147, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6024999265832820769}
+    - targetCorrespondingSourceObject: {fileID: 351731024190772147, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9054587489638983948}
+    - targetCorrespondingSourceObject: {fileID: 351731024190772147, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2383265235926606199}
   m_SourcePrefab: {fileID: 100100000, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
 --- !u!82 &4279749747556510932 stripped
 AudioSource:
@@ -176,3 +186,41 @@ MonoBehaviour:
   statusName: weaken
   amountOfStack: 0
   stackByX: 5
+--- !u!114 &9054587489638983948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6139826473357012664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75e502ca26245f446a00c73c44fda255, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackName: Bleed
+  damage: 0
+  critMultiplier: 2
+  critChance: 10
+  targetAmount: 0
+  attackAmount: 0
+  selfDamage: 0
+  statusEffects:
+  - {fileID: 2383265235926606199}
+  soundEffect: {fileID: 0}
+  sfx: {fileID: 0}
+--- !u!114 &2383265235926606199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6139826473357012664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b55e6c6ad998cce44871a5f389b74b32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statusName: bleed
+  amountOfStack: 0
+  stackByX: 40

@@ -153,7 +153,7 @@ MonoBehaviour:
   attackName: Leap
   damage: 300
   critMultiplier: 10
-  critChance: 7
+  critChance: 15
   targetAmount: 1
   attackAmount: 1
   selfDamage: 9999999
@@ -175,4 +175,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statusName: bleed
   amountOfStack: 0
-  stackByX: 60
+  stackByX: 30
