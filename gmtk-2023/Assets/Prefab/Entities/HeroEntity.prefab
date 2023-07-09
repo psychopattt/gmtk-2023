@@ -184,4 +184,4 @@ MonoBehaviour:
   selfDamage: 0
   statusEffects: []
   soundEffect: {fileID: 4279749747556510932}
-  sfx: {fileID: 8300000, guid: 0f914886b96d79b4eb5c1e8dc71c7d5f, type: 3}
+  sfx: {fileID: 8300000, guid: bedec1d819dd17f48a10eb127b9acff9, type: 3}
