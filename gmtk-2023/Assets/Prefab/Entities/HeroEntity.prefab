@@ -33,7 +33,23 @@ PrefabInstance:
       value: Hero
       objectReference: {fileID: 0}
     - target: {fileID: 601250266476128372, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
+      propertyPath: attacks.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 601250266476128372, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
       propertyPath: attacks.Array.data[0]
+      value: 
+      objectReference: {fileID: 4324371761460757}
+    - target: {fileID: 601250266476128372, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
+      propertyPath: attacks.Array.data[1]
+      value: 
+      objectReference: {fileID: 4482170723791830710}
+    - target: {fileID: 601250266476128372, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
+      propertyPath: attacks.Array.data[2]
+      value: 
+      objectReference: {fileID: 4324371761460757}
+    - target: {fileID: 601250266476128372, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
+      propertyPath: attacks.Array.data[3]
       value: 
       objectReference: {fileID: 4324371761460757}
     - target: {fileID: 945252140855865523, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
@@ -94,6 +110,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 351731024190772147, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
       insertIndex: -1
       addedObject: {fileID: -4562194466124533752}
+    - targetCorrespondingSourceObject: {fileID: 351731024190772147, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4482170723791830710}
   m_SourcePrefab: {fileID: 100100000, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
 --- !u!82 &4279749747556510932 stripped
 AudioSource:
@@ -144,3 +163,25 @@ MonoBehaviour:
   UpbeatSlamOn: {fileID: 2823928186751792134, guid: 787fc03604fbc5d418afb3fc7e792ac9, type: 2}
   NoMusic: {fileID: 6612845716209025944, guid: 787fc03604fbc5d418afb3fc7e792ac9, type: 2}
   healthState: 0
+--- !u!114 &4482170723791830710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6139826473357012664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75e502ca26245f446a00c73c44fda255, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackName: Cleave
+  damage: 5000
+  critMultiplier: 2
+  critChance: 0
+  targetAmount: 20
+  attackAmount: 1
+  selfDamage: 0
+  statusEffects: []
+  soundEffect: {fileID: 4279749747556510932}
+  sfx: {fileID: 8300000, guid: bedec1d819dd17f48a10eb127b9acff9, type: 3}
