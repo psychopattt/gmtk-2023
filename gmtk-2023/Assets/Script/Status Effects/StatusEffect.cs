@@ -53,7 +53,7 @@ public abstract class StatusEffect : MonoBehaviour
     }
     public int IndexOfStatusEffect(List<StatusEffect> currentEffect, StatusEffect EffectToSearch)
     {
-        if (DoesStatusAlreadyExist(currentEffect, EffectToSearch)) return -1;
+        if (!DoesStatusAlreadyExist(currentEffect, EffectToSearch)) return -1;
 
         for (int i =0; i < currentEffect.Count(); i++)
         {

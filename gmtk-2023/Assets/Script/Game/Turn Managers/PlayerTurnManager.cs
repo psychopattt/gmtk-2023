@@ -32,6 +32,7 @@ public class PlayerTurnManager : MonoBehaviour
         yield return ApplyStatusEffects();
         yield return Attack();
 
+        yield return EndTurnStatusEffects();
         turnNumber++;
 
         if (HasLost())
@@ -54,6 +55,17 @@ public class PlayerTurnManager : MonoBehaviour
     private bool HasLost()
     {
         return !playerSpawner.HasLivingEntities();
+    }
+    private IEnumerator EndTurnStatusEffects()
+    {
+        if (!HasLost())
+        {
+            yield return new WaitForSeconds(0.3f);
+            Entity currentEntity = playerSpawner.GetEntity(turnNumber);
+            currentEntity.ApplyBleed();
+            
+        }
+        yield return new WaitForSeconds(0.5f);
     }
 
     private IEnumerator ApplyStatusEffects()

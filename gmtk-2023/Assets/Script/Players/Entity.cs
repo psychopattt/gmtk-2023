@@ -21,6 +21,7 @@ public class Entity : MonoBehaviour
         stats.ListStatuesEffect.Add(gameObject.AddComponent<Blind>());
         stats.ListStatuesEffect.Add(gameObject.AddComponent<Weaken>());
         stats.ListStatuesEffect.Add(gameObject.AddComponent<Strength>());
+        stats.ListStatuesEffect.Add(gameObject.AddComponent<Bleed>());
     }
 
     void Update()
@@ -150,6 +151,23 @@ public class Entity : MonoBehaviour
             }
         }
     }
+    public void ApplyBleed()
+    {
+        //apply poison
+        foreach (StatusEffect effect in stats.ListStatuesEffect)
+        {
+            if (effect is Bleed)
+            {
+                Bleed bleed = (Bleed)effect;
+                Damage(bleed.calculateBleedDamage(this));
+                if (stats.Health <= 0)
+                {
+                    OnDeath?.Invoke();
+                }
+            }
+        }
+    }
+
     public static bool operator ==(Entity entity1, Entity entity2)
     {
         if (entity1 is null && entity2 is null)
