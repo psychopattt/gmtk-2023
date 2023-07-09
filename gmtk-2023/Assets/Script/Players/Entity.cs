@@ -128,7 +128,7 @@ public class Entity : MonoBehaviour
             if(effect is Poison)
             {
                 Poison poison = (Poison)effect;
-                stats.Health -= poison.calculateDamage();
+                Damage(poison.calculateDamage());
                 if( stats.Health <= 0)
                 {
                     OnDeath?.Invoke();
