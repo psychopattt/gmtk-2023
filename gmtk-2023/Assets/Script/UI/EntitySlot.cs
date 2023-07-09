@@ -1,11 +1,10 @@
-using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class EntitySlot : MonoBehaviour
 {
     [SerializeField] private Slider healthBar;
-    [SerializeField] private DamageNumber damageNumber;
+    [SerializeField] private GameObject damageNumberPrefab;
     [SerializeField] private SpriteRenderer spriteRenderer;
 
     private PlayerHealthBar playerHealthBar;
@@ -103,7 +102,8 @@ public class EntitySlot : MonoBehaviour
         {
             playerHealthBar.SetEntity(entity);
         }
-        
+
+        DamageNumber damageNumber = Instantiate(damageNumberPrefab, healthBarCanvas.transform).GetComponent<DamageNumber>();
         damageNumber.StartAnimation(damageAmount);
     }
 }

@@ -6,24 +6,30 @@ public class DamageNumber : MonoBehaviour
     [SerializeField] private TMP_Text damageText;
     private RectTransform rectTransform;
 
-    private Vector3 damageStartPosition;
-    private Vector3 damageEndPosition;
+    private const int randomOffset = 25;
+
+    private Vector2 damageStartPosition = new Vector2(50, -150);
+    private Vector2 damageEndPosition = new Vector2(300, 150);
     private Vector3 velocity = Vector3.zero;
 
     private void Awake()
     {
         gameObject.SetActive(false);
         rectTransform = GetComponent<RectTransform>();
-        damageStartPosition = rectTransform.anchoredPosition;
-        damageEndPosition = damageStartPosition + new Vector3(250, 300);
-        rectTransform.anchoredPosition = damageEndPosition;
     }
 
     public void StartAnimation(int damageAmount)
     {
-        rectTransform.anchoredPosition = damageStartPosition;
-        SetColor(damageAmount);
+        Vector2 randomStartOffset = new Vector2(Random.Range(-randomOffset, randomOffset), Random.Range(-randomOffset, randomOffset));
+        damageStartPosition += randomStartOffset;
+
+        Vector2 randomEndOffset = new Vector2(Random.Range(-randomOffset, randomOffset), Random.Range(-randomOffset, randomOffset));
+        damageEndPosition += randomEndOffset;
+
+        rectTransform.anchoredPosition = damageStartPosition + randomStartOffset;
+
         damageText.text = damageAmount.ToString();
+        SetColor(damageAmount);
         gameObject.SetActive(true);
     }
 
@@ -31,7 +37,7 @@ public class DamageNumber : MonoBehaviour
 
     private void MoveRectTowardsTarget()
     {
-        if (Vector3.Distance(rectTransform.anchoredPosition, damageEndPosition) > 5)
+        if (Vector3.Distance(rectTransform.anchoredPosition, damageEndPosition) > 6)
         {
             rectTransform.anchoredPosition = Vector3.SmoothDamp(
                 rectTransform.anchoredPosition,
@@ -43,7 +49,7 @@ public class DamageNumber : MonoBehaviour
         else
         {
             rectTransform.anchoredPosition = damageEndPosition;
-            gameObject.SetActive(false);
+            Destroy(gameObject);
         }
     }
 

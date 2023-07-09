@@ -81,6 +81,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 351731024190772147, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
       insertIndex: -1
       addedObject: {fileID: -6258809655324214757}
+    - targetCorrespondingSourceObject: {fileID: 351731024190772147, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 555174916550370030}
+    - targetCorrespondingSourceObject: {fileID: 351731024190772147, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -7886874234244565727}
   m_SourcePrefab: {fileID: 100100000, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
 --- !u!82 &4279749747556510932 stripped
 AudioSource:
@@ -113,6 +119,7 @@ MonoBehaviour:
   selfDamage: 0
   statusEffects:
   - {fileID: -6258809655324214757}
+  - {fileID: -7886874234244565727}
   soundEffect: {fileID: 4279749747556510932}
   sfx: {fileID: 8300000, guid: 3b3ce7bbc89b3144f9d4f6391a11f724, type: 3}
 --- !u!114 &558370452109796886
@@ -146,3 +153,41 @@ MonoBehaviour:
   statusName: strength
   amountOfStack: 0
   stackByX: 1
+--- !u!114 &555174916550370030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6139826473357012664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75e502ca26245f446a00c73c44fda255, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackName: Berserk
+  damage: 100
+  critMultiplier: 2
+  critChance: 10
+  targetAmount: 1
+  attackAmount: 1
+  selfDamage: 300
+  statusEffects:
+  - {fileID: -7886874234244565727}
+  soundEffect: {fileID: 4279749747556510932}
+  sfx: {fileID: 0}
+--- !u!114 &-7886874234244565727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6139826473357012664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0adc9fac501c9264e9321afcb6961f80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statusName: strength
+  amountOfStack: 0
+  stackByX: 2
