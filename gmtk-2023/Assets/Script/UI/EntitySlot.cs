@@ -14,6 +14,11 @@ public class EntitySlot : MonoBehaviour
     private Canvas healthBarCanvas;
     private Vector3 position;
 
+    private sbyte animTarget = -1;
+    private Vector3 hitStartPosition;
+    private Vector3 hitEndPosition;
+    private Vector3 velocity = Vector3.zero;
+
     private void Awake()
     {
         ResetMobHint();
@@ -54,7 +59,13 @@ public class EntitySlot : MonoBehaviour
             healthBarCanvas.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0.005f * entity.Stats.Sprite.rect.height, 0);
             healthBar.value = entity.Stats.Health / (float)entity.Stats.MaxHealth;
             healthBar.gameObject.SetActive(true);
-            transform.position = position + new Vector3(Random.Range(-200, 200), Random.Range(-20, 20), 0);
+
+            Vector3 newPosition = position + new Vector3(Random.Range(-200, 200), Random.Range(-20, 20), 0);
+            newPosition = new Vector3(newPosition.x, System.Math.Min(newPosition.y, 330), newPosition.z);
+            transform.position = newPosition;
+
+            hitStartPosition = transform.position;
+            hitEndPosition = hitStartPosition + new Vector3(Random.Range(8, 5), Random.Range(-2, 2), 0);
         }
         else
         {
@@ -66,7 +77,10 @@ public class EntitySlot : MonoBehaviour
                 healthBarCanvas.transform.localScale.y * 1.5f,
                 healthBarCanvas.transform.localScale.z * 1.5f
             );
-        }   
+
+            hitStartPosition = transform.position;
+            hitEndPosition = hitStartPosition + new Vector3(Random.Range(-8, -5), Random.Range(-2, 2), 0);
+        }
 
         AddEventListeners();
         PlayEnterAnimation();
@@ -93,6 +107,7 @@ public class EntitySlot : MonoBehaviour
             RemoveEventListeners();
             PlayExitAnimation();
             entity = null;
+            animTarget = -1;
             spriteRenderer.sprite = null;
             animator.runtimeAnimatorController = null;
             healthBar.gameObject.SetActive(false);
@@ -126,7 +141,39 @@ public class EntitySlot : MonoBehaviour
             playerHealthBar.SetEntity(entity);
         }
 
+        if (damageAmount > 0)
+            animTarget = 0;
+
         DamageNumber damageNumber = Instantiate(damageNumberPrefab, healthBarCanvas.transform).GetComponent<DamageNumber>();
         damageNumber.StartAnimation(damageAmount, damageType);
+    }
+
+    private void Update() => MoveRectTowardsTarget();
+
+    private void MoveRectTowardsTarget()
+    {
+        if (animTarget != -1)
+        {
+            Vector3 targetPosition = (animTarget == 0 ? hitEndPosition : hitStartPosition);
+
+            if (Vector3.Distance(transform.position, targetPosition) > 1)
+            {
+                transform.position = Vector3.SmoothDamp(
+                    transform.position,
+                    targetPosition,
+                    ref velocity,
+                    0.1f
+                );
+            }
+            else
+            {
+                if (animTarget == 0)
+                    animTarget = 1;
+                else if (animTarget == 1)
+                    animTarget = -1;
+
+                transform.position = targetPosition;
+            }
+        }
     }
 }
