@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: b702c59cd9f8eca4b8fd68ae05d4c46d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - FinalDanceOn: {fileID: 24500006, guid: 787fc03604fbc5d418afb3fc7e792ac9, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
