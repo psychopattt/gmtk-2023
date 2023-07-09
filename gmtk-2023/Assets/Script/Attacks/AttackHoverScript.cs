@@ -9,7 +9,7 @@ public class AttackHoverScript : MonoBehaviour
 
     public void OnEnterCreateInfo()
     {
-
+        
     }
 
     public void OnExitDeleteInfo()
