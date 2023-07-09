@@ -940,7 +940,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d14879d7f0e86148ade86ed6afc72ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minEntityAmount: 1
+  minEntityAmount: 2
   maxEntityAmount: 5
   entityPlacer: {fileID: 1872832154}
   entityPrefabs:
