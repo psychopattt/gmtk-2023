@@ -75,7 +75,7 @@ public class Entity : MonoBehaviour
 
         if (isCrit)
         {
-            entity.Damage(attack.Damage * attack.CritMultiplier, DamageType.Crit);
+            entity.Damage((attack.Damage + (int)(attack.Damage * 0.1f * findStrength(entity)) )* attack.CritMultiplier, DamageType.Crit );
         }
         else
         {
