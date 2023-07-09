@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class Weaken : StatusEffect
 {
+    private void Start()
+    {
+        setStatuesName("weaken");
+    }
     public void applyStack(Entity target, int amountOfWeaken)
     {
         List<StatusEffect> currentEffect = target.Stats.ListStatuesEffect;

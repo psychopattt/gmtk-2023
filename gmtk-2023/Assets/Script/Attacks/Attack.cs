@@ -17,6 +17,22 @@ public class Attack : MonoBehaviour
         get { return damage; }
         set { damage = value; }
     }
+    [SerializeField]
+    private int critMultiplier = 2; // Target multiple enemies
+
+    public int CritMultiplier
+    {
+        get { return critMultiplier; }
+        set { critMultiplier = value; }
+    }
+    [SerializeField]
+    private int critChance = 10; // Target multiple enemies
+
+    public int CritChance
+    {
+        get { return critChance; }
+        set { critChance = value; }
+    }
 
     [SerializeField]
     private int targetAmount; // Target multiple enemies
@@ -53,6 +69,17 @@ public class Attack : MonoBehaviour
     {
         get { return statusEffects; }
         set { statusEffects = value; }
+    }
+
+    public AudioSource soundEffect;
+
+    public AudioClip sfx;
+
+    public void playClip()
+    {
+        if (soundEffect == null) { return; }
+        soundEffect.clip = sfx;
+        soundEffect.Play();
     }
 
 }

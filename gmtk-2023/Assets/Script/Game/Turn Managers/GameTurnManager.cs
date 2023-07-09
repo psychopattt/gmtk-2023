@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class GameTurnManager : MonoBehaviour
 {
+    private SceneController sceneController;
+
     private int turnNumber = 0;
     private GameState gameState;
     private MobTurnManager mobTurnManager;
@@ -9,6 +11,7 @@ public class GameTurnManager : MonoBehaviour
 
     private void Awake()
     {
+        sceneController = SceneController.Instance;
         playerTurnManager = GetComponent<PlayerTurnManager>();
         mobTurnManager = GetComponent<MobTurnManager>();
         playerTurnManager.OnGameTurnEnded += HandleEntityTurnEnd;
@@ -35,10 +38,10 @@ public class GameTurnManager : MonoBehaviour
                 mobTurnManager.NextTurn();
                 break;
             case GameState.Won:
-                // TODO call some class that handles victory/loss screen
+                sceneController.LoadGameOverWin();
                 break;
             case GameState.Lost:
-                // TODO call some class that handles victory/loss screen
+                sceneController.LoadGameOverLoss();
                 break;
         }
 

@@ -49,24 +49,58 @@ public class Entity : MonoBehaviour
 
     public void Attack(Entity[] entities, Attack attack)
     {
+        if (entities.Length == 0)return;
         //stats.Type;
-        for (int i = 0; i < entities.Length; i++)
+        for (int i = 0; i < attack.TargetAmount; i++)
         {
-            if (entities[i].stats.Health > 0)
+            int randomTarget = UnityEngine.Random.Range(0, entities.Length);
+            if (entities[randomTarget].stats.Health > 0)
             {
-                DoAttack(entities[i], attack);
+                
+                DoAttack(entities[randomTarget], attack);
             }
             
         }
     }
     public void DoAttack(Entity entity, Attack attack)
     {
+        attack.playClip();
         entity.AddStackStatusEffect(entity, attack);
-        entity.Damage(attack.Damage);
+        bool isCrit = UnityEngine.Random.Range(0, 100) <= attack.CritChance;
+
+        if (isCrit)
+        {
+            entity.Damage(attack.Damage*attack.CritMultiplier);
+        }
+        else
+        {
+            if (attack.Damage == 5000)
+            {
+                entity.Damage((int)Math.Min((7200 / (1 + ((2 * findWeaken()) / 5))) + 100, 5000));
+            }
+            else { 
+                entity.Damage(attack.Damage); 
+            }
+        }
+        
         if(attack.SelfDamage != 0)
         {
             Damage(attack.SelfDamage);
         }
+    }
+
+    public int findWeaken()
+    {
+        List<StatusEffect> effectToSearch = stats.ListStatuesEffect;
+
+        foreach (StatusEffect effect in effectToSearch)
+        {
+            if (effect is Weaken)
+            {
+                return effect.getStack();
+            }
+        }
+        return 0;
     }
     public void AddStackStatusEffect(Entity entity, Attack attack)
     {
@@ -75,9 +109,9 @@ public class Entity : MonoBehaviour
         {
             for (int y = 0; y < entity.stats.ListStatuesEffect.Count(); y++)
             {
-                if (attack.StatusEffects[i].getStatusName() == entity.stats.ListStatuesEffect[i].getStatusName())
+                if (attack.StatusEffects[i].getStatusName() == entity.Stats.ListStatuesEffect[y].getStatusName())
                 {
-                    entity.stats.ListStatuesEffect[i].addStack(attack.StatusEffects[i].getStack());
+                    entity.stats.ListStatuesEffect[y].addStack(attack.StatusEffects[i].StackByX);
                 }
             }
         }
