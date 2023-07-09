@@ -45,7 +45,6 @@ public class EntitySpawner : MonoBehaviour
 
     public Entity GetEntity(int entityIndex)
     {
-        Debug.Log(entityIndex);
         return currentEntities[entityIndex];
     }
 
