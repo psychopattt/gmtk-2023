@@ -29,7 +29,7 @@ public class EntityStats : MonoBehaviour
         set => sprite = value;
     }
 
-    [SerializeField] public int maxHealth; //im sorry but this makes the health bar work
+    [SerializeField] private int maxHealth; //im sorry but this makes the health bar work
 
     public int MaxHealth
     {
@@ -37,7 +37,7 @@ public class EntityStats : MonoBehaviour
         set => maxHealth = value;
     }
 
-    [SerializeField] public int health; //im sorry but this makes the health bar work
+    [SerializeField] private int health; //im sorry but this makes the health bar work
 
     public int Health
     {
