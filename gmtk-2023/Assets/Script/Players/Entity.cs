@@ -8,6 +8,9 @@ public class Entity : MonoBehaviour
     [SerializeField]
     private EntityStats stats;
 
+    [SerializeField]
+    private BossMusic bossMusic;
+
     public event Action<int> OnHealthLost;
     public event Action<int> OnHealthGained;
     public event Action OnDeath;
@@ -47,7 +50,7 @@ public class Entity : MonoBehaviour
 
     public void Attack(Entity[] entities, Attack attack)
     {
-        if (entities.Length == 0) return;
+        if (entities.Length == 0)return;
         //stats.Type;
         for (int i = 0; i < attack.TargetAmount; i++)
         {
@@ -62,6 +65,7 @@ public class Entity : MonoBehaviour
     }
     public void DoAttack(Entity entity, Attack attack)
     {
+        attack.playClip();
         entity.AddStackStatusEffect(entity, attack);
         bool isCrit = UnityEngine.Random.Range(0, 100) <= attack.CritChance;
 
@@ -73,7 +77,7 @@ public class Entity : MonoBehaviour
         {
             if (attack.Damage == 5000)
             {
-                entity.Damage((int)Math.Min((7200 / (1 + ((2 * findWeaken()) / 20))) + 100, 5000));
+                entity.Damage((int)Math.Min((7200 / (1 + ((2 * findWeaken()) / 5))) + 100, 5000));
             }
             else { 
                 entity.Damage(attack.Damage); 
@@ -106,9 +110,9 @@ public class Entity : MonoBehaviour
         {
             for (int y = 0; y < entity.stats.ListStatuesEffect.Count(); y++)
             {
-                if (attack.StatusEffects[i].getStatusName() == entity.Stats.ListStatuesEffect[i].getStatusName())
+                if (attack.StatusEffects[i].getStatusName() == entity.Stats.ListStatuesEffect[y].getStatusName())
                 {
-                    entity.stats.ListStatuesEffect[i].addStack(attack.StatusEffects[i].StackByX);
+                    entity.stats.ListStatuesEffect[y].addStack(attack.StatusEffects[i].StackByX);
                 }
             }
         }
@@ -122,7 +126,7 @@ public class Entity : MonoBehaviour
             if(effect is Poison)
             {
                 Poison poison = (Poison)effect;
-                stats.Health -= poison.calculateDamage();
+                Damage(poison.calculateDamage());
                 if( stats.Health <= 0)
                 {
                     OnDeath?.Invoke();

@@ -71,4 +71,15 @@ public class Attack : MonoBehaviour
         set { statusEffects = value; }
     }
 
+    public AudioSource soundEffect;
+
+    public AudioClip sfx;
+
+    public void playClip()
+    {
+        if (soundEffect == null) { return; }
+        soundEffect.clip = sfx;
+        soundEffect.Play();
+    }
+
 }

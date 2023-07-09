@@ -10,32 +10,40 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 351731024190772147, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
       propertyPath: m_Name
-      value: HeroEntity
-      objectReference: {fileID: 0}
-    - target: {fileID: 601250266476128372, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
-      propertyPath: type
-      value: 1
+      value: GobelinEntity
       objectReference: {fileID: 0}
     - target: {fileID: 601250266476128372, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
       propertyPath: health
-      value: 1000000
+      value: 800
       objectReference: {fileID: 0}
     - target: {fileID: 601250266476128372, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
       propertyPath: sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 88f5bc584dd555c4a9d7c06187d14501, type: 3}
+      objectReference: {fileID: 21300000, guid: 489e7c21bf2a1a04ebf8888f7ab8bf6f, type: 3}
     - target: {fileID: 601250266476128372, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
       propertyPath: maxHealth
-      value: 1000000
+      value: 800
       objectReference: {fileID: 0}
     - target: {fileID: 601250266476128372, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
       propertyPath: displayName
-      value: Hero
+      value: Gobelin
+      objectReference: {fileID: 0}
+    - target: {fileID: 601250266476128372, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
+      propertyPath: attacks.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 601250266476128372, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
       propertyPath: attacks.Array.data[0]
       value: 
-      objectReference: {fileID: 4324371761460757}
+      objectReference: {fileID: -468888596473846155}
+    - target: {fileID: 601250266476128372, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
+      propertyPath: attacks.Array.data[1]
+      value: 
+      objectReference: {fileID: 3657844342749007350}
+    - target: {fileID: 601250266476128372, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
+      propertyPath: listStatusEffect.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 945252140855865523, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -52,6 +60,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7687692517520151007, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -2675697983079463703, guid: db0601a2e5c4b714988cc3c0731709e0, type: 2}
     - target: {fileID: 7981993711418276127, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -66,14 +78,25 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 351731024190772147, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4324371761460757}
+      addedObject: {fileID: -468888596473846155}
+    - targetCorrespondingSourceObject: {fileID: 351731024190772147, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 558370452109796886}
+    - targetCorrespondingSourceObject: {fileID: 351731024190772147, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3657844342749007350}
   m_SourcePrefab: {fileID: 100100000, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
+--- !u!82 &4279749747556510932 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7687692517520151007, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
+  m_PrefabInstance: {fileID: 5896498501752978699}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6139826473357012664 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 351731024190772147, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
   m_PrefabInstance: {fileID: 5896498501752978699}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4324371761460757
+--- !u!114 &-468888596473846155
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,11 +108,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75e502ca26245f446a00c73c44fda255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackName: Big Attack
-  damage: 5000
-  critMultiplier: 1
-  critChance: 0
+  attackName: Poison Dagger
+  damage: 50
+  critMultiplier: 2
+  critChance: 7
+  targetAmount: 1
+  attackAmount: 3
+  selfDamage: 0
+  statusEffects:
+  - {fileID: 558370452109796886}
+  soundEffect: {fileID: 4279749747556510932}
+  sfx: {fileID: 8300000, guid: 3825f003400221741b20cb63df7b935a, type: 3}
+--- !u!114 &558370452109796886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6139826473357012664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cdca75ea6147604d99ee046418344b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statusName: basicEffect
+  amountOfStack: 0
+  stackByX: 1
+  poisonDamage: 50
+--- !u!114 &3657844342749007350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6139826473357012664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75e502ca26245f446a00c73c44fda255, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackName: Leap
+  damage: 300
+  critMultiplier: 10
+  critChance: 7
   targetAmount: 1
   attackAmount: 1
-  selfDamage: 0
+  selfDamage: 9999999
   statusEffects: []
+  soundEffect: {fileID: 4279749747556510932}
+  sfx: {fileID: 8300000, guid: 3825f003400221741b20cb63df7b935a, type: 3}

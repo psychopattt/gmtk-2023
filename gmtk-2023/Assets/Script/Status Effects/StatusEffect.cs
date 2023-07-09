@@ -36,7 +36,10 @@ public abstract class StatusEffect : MonoBehaviour
     {
         return amountOfStack;
     }
-    
+    public void setStatuesName(string name)
+    {
+        statusName = name;
+    }
     public bool DoesStatusAlreadyExist(List<StatusEffect> currentEffect, StatusEffect EffectToSearch)
     {
         foreach (StatusEffect effect in currentEffect)

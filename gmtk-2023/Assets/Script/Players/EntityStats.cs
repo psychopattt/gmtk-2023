@@ -44,13 +44,6 @@ public class EntityStats : MonoBehaviour
         set => health = value;
     }
 
-    [SerializeField] private int weaken;
-    public int Weaken
-    {
-        get => weaken;
-        set => weaken = value;
-    }
-
     [SerializeField] private List<Attack> attacks;
 
     public List<Attack> Attacks
