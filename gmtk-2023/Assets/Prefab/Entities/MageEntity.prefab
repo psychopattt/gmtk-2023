@@ -146,7 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statusName: basicEffect
   amountOfStack: 0
-  stackByX: 10
+  stackByX: 5
   poisonDamage: 50
 --- !u!114 &3657844342749007350
 MonoBehaviour:
