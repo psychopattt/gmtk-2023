@@ -36,7 +36,9 @@ public class Entity : MonoBehaviour
     {
         stats.Damage(damageAmount);
         int currentHealth = stats.Health;
-
+        if (bossMusic != null) { 
+            bossMusic.updateSound(stats.Health); 
+        }
         if (damageAmount < 0)
             OnHealthGained?.Invoke(damageAmount);
         else
@@ -54,6 +56,7 @@ public class Entity : MonoBehaviour
         //stats.Type;
         for (int i = 0; i < attack.TargetAmount; i++)
         {
+            
             int randomTarget = UnityEngine.Random.Range(0, entities.Length);
             if (entities[randomTarget].stats.Health > 0)
             {
