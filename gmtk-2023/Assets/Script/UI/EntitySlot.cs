@@ -8,6 +8,7 @@ public class EntitySlot : MonoBehaviour
     [SerializeField] private DamageNumber damageNumber;
     [SerializeField] private SpriteRenderer spriteRenderer;
 
+    private PlayerHealthBar playerHealthBar;
     private Entity entity = null;
     private Canvas healthBarCanvas;
     private Vector3 position;
@@ -17,6 +18,7 @@ public class EntitySlot : MonoBehaviour
         healthBar.gameObject.SetActive(false);
         healthBarCanvas = healthBar.GetComponentInParent<Canvas>();
         healthBarCanvas.worldCamera = GameObject.FindGameObjectWithTag("UI Camera").GetComponent<Camera>();
+        playerHealthBar = GetComponentInParent<PlayerHealthBar>();
     }
 
     public bool IsAvailable() => entity == null;
@@ -26,11 +28,15 @@ public class EntitySlot : MonoBehaviour
     public void SetEntity(Entity entity)
     {
         this.entity = entity;
-        healthBar.gameObject.SetActive(true);
         spriteRenderer.sprite = entity.Stats.Sprite;
-        healthBar.value = entity.Stats.Health / (float)entity.Stats.MaxHealth;
         healthBarCanvas.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0.005f * entity.Stats.Sprite.rect.height, 0);
         transform.position = position + new Vector3(Random.Range(-200, 200), Random.Range(-20, 20), 0);
+
+        if (entity.Stats.Type == EntityType.Mob)
+        {
+            healthBar.value = entity.Stats.Health / (float)entity.Stats.MaxHealth;
+            healthBar.gameObject.SetActive(true);
+        }
 
         AddEventListeners();
         PlayEnterAnimation();
@@ -79,13 +85,25 @@ public class EntitySlot : MonoBehaviour
 
     private void HandleHealthGainedAnimation(int damageAmount)
     {
-        healthBar.value = entity.Stats.Health / (float)entity.Stats.MaxHealth;
-        damageNumber.StartAnimation(damageAmount);
+        HandleHealthChanged(damageAmount);
     }
 
     private void HandleHealthLostAnimation(int damageAmount)
     {
-        healthBar.value = entity.Stats.Health / (float)entity.Stats.MaxHealth;
+        HandleHealthChanged(damageAmount);
+    }
+
+    private void HandleHealthChanged(int damageAmount)
+    {
+        if (entity.Stats.Type == EntityType.Mob)
+        {
+            healthBar.value = entity.Stats.Health / (float)entity.Stats.MaxHealth;
+        }
+        else
+        {
+            playerHealthBar.SetEntity(entity);
+        }
+        
         damageNumber.StartAnimation(damageAmount);
     }
 }
