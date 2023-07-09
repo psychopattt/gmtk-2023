@@ -28,14 +28,25 @@ public class EntitySlot : MonoBehaviour
     {
         this.entity = entity;
         spriteRenderer.sprite = entity.Stats.Sprite;
-        healthBarCanvas.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0.005f * entity.Stats.Sprite.rect.height, 0);
-        transform.position = position + new Vector3(Random.Range(-200, 200), Random.Range(-20, 20), 0);
 
         if (entity.Stats.Type == EntityType.Mob)
         {
+            healthBarCanvas.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0.005f * entity.Stats.Sprite.rect.height, 0);
             healthBar.value = entity.Stats.Health / (float)entity.Stats.MaxHealth;
             healthBar.gameObject.SetActive(true);
+            transform.position = position + new Vector3(Random.Range(-200, 200), Random.Range(-20, 20), 0);
         }
+        else
+        {
+            healthBarCanvas.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0.8f, 0);
+            transform.position = position + new Vector3(Random.Range(-80, 20), 70, 0);
+            transform.localScale = new Vector3(400, 400, transform.localScale.z);
+            healthBarCanvas.transform.localScale = new Vector3(
+                healthBarCanvas.transform.localScale.x * 1.5f,
+                healthBarCanvas.transform.localScale.y * 1.5f,
+                healthBarCanvas.transform.localScale.z * 1.5f
+            );
+        }   
 
         AddEventListeners();
         PlayEnterAnimation();
@@ -49,8 +60,7 @@ public class EntitySlot : MonoBehaviour
     private void AddEventListeners()
     {
         entity.OnDeath += Clear;
-        entity.OnHealthLost += HandleHealthLostAnimation;
-        entity.OnHealthGained += HandleHealthGainedAnimation;
+        entity.OnHealthChanged += HandleHealthChanged;
     }
 
     public void Clear()
@@ -68,8 +78,7 @@ public class EntitySlot : MonoBehaviour
     private void RemoveEventListeners()
     {
         entity.OnDeath -= Clear;
-        entity.OnHealthLost -= HandleHealthLostAnimation;
-        entity.OnHealthGained -= HandleHealthGainedAnimation;
+        entity.OnHealthChanged -= HandleHealthChanged;
     }
 
     private void PlayEnterAnimation()
@@ -82,17 +91,7 @@ public class EntitySlot : MonoBehaviour
         // TODO entity slot ExitAnimation
     }
 
-    private void HandleHealthGainedAnimation(int damageAmount)
-    {
-        HandleHealthChanged(damageAmount);
-    }
-
-    private void HandleHealthLostAnimation(int damageAmount)
-    {
-        HandleHealthChanged(damageAmount);
-    }
-
-    private void HandleHealthChanged(int damageAmount)
+    private void HandleHealthChanged(int damageAmount, DamageType damageType)
     {
         if (entity.Stats.Type == EntityType.Mob)
         {
@@ -104,6 +103,6 @@ public class EntitySlot : MonoBehaviour
         }
 
         DamageNumber damageNumber = Instantiate(damageNumberPrefab, healthBarCanvas.transform).GetComponent<DamageNumber>();
-        damageNumber.StartAnimation(damageAmount);
+        damageNumber.StartAnimation(damageAmount, damageType);
     }
 }

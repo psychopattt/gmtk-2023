@@ -18,7 +18,7 @@ public class DamageNumber : MonoBehaviour
         rectTransform = GetComponent<RectTransform>();
     }
 
-    public void StartAnimation(int damageAmount)
+    public void StartAnimation(int damageAmount, DamageType damageType)
     {
         Vector2 randomStartOffset = new Vector2(Random.Range(-randomOffset, randomOffset), Random.Range(-randomOffset, randomOffset));
         damageStartPosition += randomStartOffset;
@@ -29,7 +29,7 @@ public class DamageNumber : MonoBehaviour
         rectTransform.anchoredPosition = damageStartPosition + randomStartOffset;
 
         damageText.text = damageAmount.ToString();
-        SetColor(damageAmount);
+        SetColor(damageAmount, damageType);
         gameObject.SetActive(true);
     }
 
@@ -53,8 +53,32 @@ public class DamageNumber : MonoBehaviour
         }
     }
 
-    private void SetColor(int damageAmount)
+    private void SetColor(int damageAmount, DamageType damageType)
     {
-        damageText.color = damageAmount < 0 ? Color.green : Color.red;
+        if (damageAmount < 0)
+        {
+            damageText.color = new Color32(0, 200, 0, 255);
+        }
+        else
+        {
+            switch (damageType)
+            {
+                case DamageType.Normal:
+                    damageText.color = new Color32(200, 200, 200, 255);
+                    break;
+                case DamageType.Crit:
+                    damageText.color = new Color32(200, 200, 0, 255);
+                    break;
+                case DamageType.Poison:
+                    damageText.color = new Color32(153, 51, 153, 255);
+                    break;
+                case DamageType.Bleed:
+                    damageText.color = new Color32(200, 0, 0, 255);
+                    break;
+                case DamageType.Self:
+                    damageText.color = new Color32(228, 27, 113, 255);
+                    break;
+            }
+        }
     }
 }

@@ -11,8 +11,7 @@ public class Entity : MonoBehaviour
     [SerializeField]
     private BossMusic bossMusic;
 
-    public event Action<int> OnHealthLost;
-    public event Action<int> OnHealthGained;
+    public event Action<int, DamageType> OnHealthChanged;
     public event Action OnDeath;
 
     void Start()
@@ -34,17 +33,17 @@ public class Entity : MonoBehaviour
         get => stats;
     }
 
-    public void Damage(int damageAmount)
+    public void Damage(int damageAmount) => Damage(damageAmount, DamageType.Normal);
+
+    public void Damage(int damageAmount, DamageType damageType)
     {
         stats.Damage(damageAmount);
         int currentHealth = stats.Health;
         if (bossMusic != null) { 
             bossMusic.updateSound(stats.Health); 
         }
-        if (damageAmount < 0)
-            OnHealthGained?.Invoke(damageAmount);
-        else
-            OnHealthLost?.Invoke(damageAmount);
+        
+        OnHealthChanged?.Invoke(damageAmount, damageType);
 
         if (currentHealth <= 0)
         {
@@ -76,22 +75,23 @@ public class Entity : MonoBehaviour
 
         if (isCrit)
         {
-            entity.Damage(attack.Damage*attack.CritMultiplier);
+            entity.Damage(attack.Damage * attack.CritMultiplier, DamageType.Crit);
         }
         else
         {
             if (attack.Damage == 5000)
             {
-                entity.Damage((int)Math.Min((7200 / (1 + ((2 * findWeaken()) / 5))) + 100, 5000));
+                entity.Damage(Math.Min((7200 / (1 + ((2 * findWeaken()) / 5))) + 100, 5000));
             }
-            else {
-                entity.Damage(attack.Damage+(int)(attack.Damage*0.1f*findStrength(entity))); 
+            else
+            {
+                entity.Damage(attack.Damage + (int)(attack.Damage * 0.1f * findStrength(entity)));
             }
         }
         
         if(attack.SelfDamage != 0)
         {
-            Damage(attack.SelfDamage);
+            Damage(attack.SelfDamage, DamageType.Self);
         }
     }
     public int findStrength(Entity entity)
@@ -143,7 +143,7 @@ public class Entity : MonoBehaviour
             if(effect is Poison)
             {
                 Poison poison = (Poison)effect;
-                Damage(poison.calculateDamage());
+                Damage(poison.calculateDamage(), DamageType.Poison);
                 if( stats.Health <= 0)
                 {
                     OnDeath?.Invoke();
@@ -159,7 +159,7 @@ public class Entity : MonoBehaviour
             if (effect is Bleed)
             {
                 Bleed bleed = (Bleed)effect;
-                Damage(bleed.calculateBleedDamage(this));
+                Damage(bleed.calculateBleedDamage(this), DamageType.Bleed);
                 if (stats.Health <= 0)
                 {
                     OnDeath?.Invoke();
