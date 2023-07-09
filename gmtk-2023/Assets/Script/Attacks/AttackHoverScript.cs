@@ -7,7 +7,12 @@ public class AttackHoverScript : MonoBehaviour
     [SerializeField]
     private Attack attack;
 
-    private void onEnterCreateInfo()
+    public void OnEnterCreateInfo()
+    {
+
+    }
+
+    public void OnExitDeleteInfo()
     {
 
     }
