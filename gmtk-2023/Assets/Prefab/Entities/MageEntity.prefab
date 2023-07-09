@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 601250266476128372, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
       propertyPath: health
-      value: 6
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 601250266476128372, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
       propertyPath: sprite
@@ -22,7 +22,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 16d5fee9e6e992a4eb314ec1af4dab13, type: 3}
     - target: {fileID: 601250266476128372, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
       propertyPath: maxHealth
-      value: 6
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 601250266476128372, guid: 6578701ca10299a48ab25a4a792276db, type: 3}
       propertyPath: displayName
@@ -207,8 +207,8 @@ MonoBehaviour:
   selfDamage: 0
   statusEffects:
   - {fileID: 2383265235926606199}
-  soundEffect: {fileID: 0}
-  sfx: {fileID: 0}
+  soundEffect: {fileID: 4279749747556510932}
+  sfx: {fileID: 8300000, guid: 748b3fd63dfdc8c4896c4bb4ff47efdb, type: 3}
 --- !u!114 &2383265235926606199
 MonoBehaviour:
   m_ObjectHideFlags: 0

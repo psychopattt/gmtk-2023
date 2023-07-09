@@ -156,7 +156,7 @@ MonoBehaviour:
   critChance: 15
   targetAmount: 1
   attackAmount: 1
-  selfDamage: 9999999
+  selfDamage: 9999
   statusEffects:
   - {fileID: -2172317887749958721}
   soundEffect: {fileID: 4279749747556510932}
