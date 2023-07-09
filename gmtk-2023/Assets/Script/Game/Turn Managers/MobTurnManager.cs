@@ -79,6 +79,11 @@ public class MobTurnManager : MonoBehaviour
             OnGameTurnEnded?.Invoke(GameState.Lost);
             turnNumber = 0;
         }
+        else if (!playerSpawner.HasLivingEntities())
+        {
+            OnGameTurnEnded?.Invoke(GameState.Won);
+            turnNumber = 0;
+        }
         else if (turnNumber >= mobSpawner.EntityCount)
         {
             OnGameTurnEnded?.Invoke(GameState.PlayerTurn);
