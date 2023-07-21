@@ -12,19 +12,22 @@ public class PlayerTurnManager : MonoBehaviour
     public event Action OnEntityTurnEnded;
     public event Action<GameState> OnGameTurnEnded;
 
-    private void Initialize()
+    private void Start()
     {
-        if (!initialized)
-        {
-            initialized = true;
-            playerSpawner.SpawnEntities();
-        }
+        playerSpawner.OnEntitiesSpawned += NextTurn;
     }
 
     public void NextTurn()
     {
-        Initialize();
-        StartCoroutine(ExecuteTurn());
+        if (!initialized)
+        {
+            initialized = true;
+            StartCoroutine(playerSpawner.SpawnEntities());
+        }
+        else
+        {
+            StartCoroutine(ExecuteTurn());
+        }
     }
 
     private IEnumerator ExecuteTurn()

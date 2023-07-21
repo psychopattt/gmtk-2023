@@ -19,6 +19,11 @@ public class MobTurnManager : MonoBehaviour
         mobDeathCount.text = string.Format("{0} Remaining Mobs", availableMobCount);
     }
 
+    private void Start()
+    {
+        mobSpawner.OnEntitiesSpawned += ContinueTurn;
+    }
+
     public void NextTurn()
     {
         int remainingMobCount = availableMobCount - mobSpawner.GetDeathCount();
@@ -26,8 +31,13 @@ public class MobTurnManager : MonoBehaviour
         mobSpawner.MaxEntityAmount = Math.Min(mobSpawner.MaxEntityAmount, remainingMobCount);
         
         if (!mobSpawner.HasLivingEntities())
-            mobSpawner.SpawnEntities();
+            StartCoroutine(mobSpawner.SpawnEntities());
+        else
+            ContinueTurn();
+    }
 
+    public void ContinueTurn()
+    {
         SetCurrentMobHint();
         ApplyStatusEffects();
         ActivateUserButtons();

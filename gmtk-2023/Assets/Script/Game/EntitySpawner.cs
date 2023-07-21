@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,6 +16,7 @@ public class EntitySpawner : MonoBehaviour
     private int deathCount = 0;
 
     public event Action OnAllEntitiesDead;
+    public event Action OnEntitiesSpawned;
 
     private void Awake()
     {
@@ -44,10 +46,12 @@ public class EntitySpawner : MonoBehaviour
         entityPlacer.SetCurrentMobHint(currentEntities[currentMob]);
     }
 
-    public void SpawnEntities()
+    public IEnumerator SpawnEntities()
     {
         for (int i = 0; i < UnityEngine.Random.Range(minEntityAmount, maxEntityAmount + 1); i++)
         {
+            yield return new WaitForSeconds(UnityEngine.Random.Range(0.1f, 0.3f));
+
             int selectedEntityIndex = UnityEngine.Random.Range(0, entityPrefabs.Count);
             GameObject selectedEntityInstance = Instantiate(entityPrefabs[selectedEntityIndex]);
             Entity selectedEntity = selectedEntityInstance.GetComponent<Entity>();
@@ -57,6 +61,10 @@ public class EntitySpawner : MonoBehaviour
             entityPlacer.PlaceEntity(selectedEntity);
             AddEventListeners(selectedEntity);
         }
+
+        yield return new WaitForSeconds(0.2f);
+
+        OnEntitiesSpawned?.Invoke();
     }
 
     public Entity GetEntity(int entityIndex)
