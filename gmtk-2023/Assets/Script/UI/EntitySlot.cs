@@ -63,9 +63,6 @@ public class EntitySlot : MonoBehaviour
             Vector3 newPosition = position + new Vector3(Random.Range(-200, 200), Random.Range(-20, 20), 0);
             newPosition = new Vector3(newPosition.x, System.Math.Min(newPosition.y, 330), newPosition.z);
             transform.position = newPosition;
-
-            hitStartPosition = transform.position;
-            hitEndPosition = hitStartPosition + new Vector3(Random.Range(8, 5), Random.Range(-2, 2), 0);
         }
         else
         {
@@ -77,10 +74,10 @@ public class EntitySlot : MonoBehaviour
                 healthBarCanvas.transform.localScale.y * 1.5f,
                 healthBarCanvas.transform.localScale.z * 1.5f
             );
-
-            hitStartPosition = transform.position;
-            hitEndPosition = hitStartPosition + new Vector3(Random.Range(-8, -5), Random.Range(-2, 2), 0);
         }
+
+        hitStartPosition = transform.position;
+        RandomizeKnockbackAmount();
 
         AddEventListeners();
         PlayEnterAnimation();
@@ -130,6 +127,14 @@ public class EntitySlot : MonoBehaviour
         // TODO entity slot ExitAnimation
     }
 
+    private void RandomizeKnockbackAmount()
+    {
+        if (entity.Stats.Type == EntityType.Mob)
+            hitEndPosition = hitStartPosition + new Vector3(Random.Range(15f, 24f), Random.Range(-8f, 8f), 0);
+        else
+            hitEndPosition = hitStartPosition + new Vector3(Random.Range(-24f, -15f), Random.Range(-8f, 8f), 0);
+    }
+
     private void HandleHealthChanged(int damageAmount, DamageType damageType)
     {
         if (entity.Stats.Type == EntityType.Mob)
@@ -142,7 +147,10 @@ public class EntitySlot : MonoBehaviour
         }
 
         if (damageAmount > 0)
+        {
+            RandomizeKnockbackAmount();
             animTarget = 0;
+        }
 
         DamageNumber damageNumber = Instantiate(damageNumberPrefab, healthBarCanvas.transform).GetComponent<DamageNumber>();
         damageNumber.StartAnimation(damageAmount, damageType);
