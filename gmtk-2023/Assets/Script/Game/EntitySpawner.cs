@@ -26,7 +26,18 @@ public class EntitySpawner : MonoBehaviour
 
     public int EntityCount => currentEntities.Count;
 
-    public int MaxEntityAmount { get => maxEntityAmount; set => maxEntityAmount = value; }
+    public int MaxEntityAmount
+    {
+        get => maxEntityAmount;
+        
+        set
+        {
+            maxEntityAmount = value;
+
+            if (maxEntityAmount < minEntityAmount)
+                minEntityAmount = maxEntityAmount;
+        }
+    }
 
     public void SetCurrentMobHint(int currentMob)
     {

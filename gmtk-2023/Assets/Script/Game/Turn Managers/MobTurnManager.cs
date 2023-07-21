@@ -21,11 +21,12 @@ public class MobTurnManager : MonoBehaviour
 
     public void NextTurn()
     {
+        int remainingMobCount = availableMobCount - mobSpawner.GetDeathCount();
+        mobDeathCount.text = string.Format("{0} Remaining Mobs", remainingMobCount);
+        mobSpawner.MaxEntityAmount = Math.Min(mobSpawner.MaxEntityAmount, remainingMobCount);
+        
         if (!mobSpawner.HasLivingEntities())
             mobSpawner.SpawnEntities();
-
-        mobDeathCount.text = string.Format("{0} Remaining Mobs", availableMobCount - mobSpawner.GetDeathCount());
-        mobSpawner.MaxEntityAmount = Math.Min(mobSpawner.MaxEntityAmount, availableMobCount);
 
         SetCurrentMobHint();
         ApplyStatusEffects();
@@ -34,7 +35,8 @@ public class MobTurnManager : MonoBehaviour
 
     public void SetCurrentMobHint()
     {
-        mobSpawner.SetCurrentMobHint(turnNumber);
+        if (mobSpawner.HasLivingEntities())
+            mobSpawner.SetCurrentMobHint(turnNumber);
     }
 
     private void ApplyStatusEffects()
@@ -55,7 +57,6 @@ public class MobTurnManager : MonoBehaviour
         if (mobSpawner.HasLivingEntities())
         {
             menuLogic.SetMenu(mobSpawner.GetEntity(turnNumber));
-            // TODO activate UI controls for the mob currently playing
         }
         else
         {
@@ -65,7 +66,6 @@ public class MobTurnManager : MonoBehaviour
 
     public void Attack(Attack attack)
     {
-        // TODO called by the user when using an attack button in the UI
         mobSpawner.GetEntity(turnNumber).Attack(playerSpawner.GetEntities().ToArray(), attack);
         EndTurn();
     }
