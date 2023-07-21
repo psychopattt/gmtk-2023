@@ -6,11 +6,6 @@ public class EntityPlacer : MonoBehaviour
     [SerializeField] private EntitySlots mobSlots;
     [SerializeField] private EntitySlots playerSlots;
 
-    private void Awake()
-    {
-        mobSlots.SetOffset(new Vector3(0, -200, 0));
-    }
-
     public void SetCurrentMobHint(Entity currentMob)
     {
         mobSlots.SetCurrentMobHint(currentMob);

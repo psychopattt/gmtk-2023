@@ -10,6 +10,7 @@ public class EntitySlots : MonoBehaviour
     private void Awake()
     {
         Vector3 offset = new Vector3(0, 0, 100);
+        Vector3 position = new Vector3(515, -400, 0);
 
         for (int i = 0; i < slotCount; i++)
         {
@@ -17,7 +18,7 @@ public class EntitySlots : MonoBehaviour
             offset.z += 10;
 
             slots[i] = Instantiate(slotPrefab, transform).GetComponent<EntitySlot>();
-            slots[i].SetPosition(slots[i].transform.position + offset);
+            slots[i].SetPosition(position + offset);
         }
     }
 
@@ -29,14 +30,6 @@ public class EntitySlots : MonoBehaviour
                 slot.SetMobHint();
             else
                 slot.ResetMobHint();
-        }
-    }
-
-    public void SetOffset(Vector3 offset)
-    {
-        foreach (EntitySlot slot in slots)
-        {
-            slot.SetPosition(slot.GetPosition() + offset);
         }
     }
 

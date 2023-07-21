@@ -57,17 +57,14 @@ public class EntitySlot : MonoBehaviour
         if (entity.Stats.Type == EntityType.Mob)
         {
             healthBarCanvas.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0.005f * entity.Stats.Sprite.rect.height, 0);
+            transform.position = position + new Vector3(Random.Range(-192f, 192f), Random.Range(-20f, 20f), 0);
             healthBar.value = entity.Stats.Health / (float)entity.Stats.MaxHealth;
             healthBar.gameObject.SetActive(true);
-
-            Vector3 newPosition = position + new Vector3(Random.Range(-200, 200), Random.Range(-20, 20), 0);
-            newPosition = new Vector3(newPosition.x, System.Math.Min(newPosition.y, 330), newPosition.z);
-            transform.position = newPosition;
         }
         else
         {
             healthBarCanvas.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0.8f, 0);
-            transform.position = position + new Vector3(Random.Range(-80, 20), 70, 0);
+            transform.position = new Vector3(Random.Range(-592f, -400f), Random.Range(-100f, -90f), 0);
             transform.localScale = new Vector3(400, 400, transform.localScale.z);
             healthBarCanvas.transform.localScale = new Vector3(
                 healthBarCanvas.transform.localScale.x * 1.5f,
@@ -87,8 +84,6 @@ public class EntitySlot : MonoBehaviour
     {
         this.position = position;
     }
-
-    public Vector3 GetPosition() => position;
 
     private void AddEventListeners()
     {
