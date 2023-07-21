@@ -83,6 +83,7 @@ public class MobTurnManager : MonoBehaviour
     private void EndTurn()
     {
         turnNumber++;
+        mobSpawner.SetCurrentMobHint(-1);
 
         if (mobSpawner.GetDeathCount() >= availableMobCount)
         {

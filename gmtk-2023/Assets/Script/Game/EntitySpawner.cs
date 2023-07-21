@@ -43,7 +43,10 @@ public class EntitySpawner : MonoBehaviour
 
     public void SetCurrentMobHint(int currentMob)
     {
-        entityPlacer.SetCurrentMobHint(currentEntities[currentMob]);
+        if (currentMob >= 0)
+            entityPlacer.SetCurrentMobHint(currentEntities[currentMob]);
+        else
+            entityPlacer.SetCurrentMobHint(null);
     }
 
     public IEnumerator SpawnEntities()

@@ -26,7 +26,7 @@ public class EntitySlots : MonoBehaviour
     {
         foreach (EntitySlot slot in slots)
         {
-            if (slot.GetEntity() == currentMob)
+            if (currentMob != null && slot.GetEntity() == currentMob)
                 slot.SetMobHint();
             else
                 slot.ResetMobHint();
