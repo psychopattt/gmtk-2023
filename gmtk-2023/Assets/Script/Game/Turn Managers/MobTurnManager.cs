@@ -34,7 +34,7 @@ public class MobTurnManager : MonoBehaviour
     private void NextTurn()
     {
         int remainingMobCount = availableMobCount - mobSpawner.GetDeathCount();
-        mobDeathCount.text = string.Format("{0} Mobs Left", remainingMobCount);
+        mobDeathCount.text = string.Format("{0} Mob{1} Left", remainingMobCount, remainingMobCount > 1 ? "s" : "");
         mobSpawner.MaxEntityAmount = Math.Min(mobSpawner.MaxEntityAmount, remainingMobCount);
 
         if (!mobSpawner.HasLivingEntities())
