@@ -16,20 +16,27 @@ public class MobTurnManager : MonoBehaviour
 
     private void Awake()
     {
-        mobDeathCount.text = string.Format("{0} Remaining Mobs", availableMobCount);
+        mobDeathCount.text = string.Format("{0} Mobs Left", availableMobCount);
     }
 
     private void Start()
     {
         mobSpawner.OnEntitiesSpawned += ContinueTurn;
+        mobSpawner.OnEntityDead += HandleEntityDeath;
     }
 
-    public void NextTurn()
+    public void BeginTurns()
+    {
+        turnNumber = 0;
+        NextTurn();
+    }
+
+    private void NextTurn()
     {
         int remainingMobCount = availableMobCount - mobSpawner.GetDeathCount();
-        mobDeathCount.text = string.Format("{0} Remaining Mobs", remainingMobCount);
+        mobDeathCount.text = string.Format("{0} Mobs Left", remainingMobCount);
         mobSpawner.MaxEntityAmount = Math.Min(mobSpawner.MaxEntityAmount, remainingMobCount);
-        
+
         if (!mobSpawner.HasLivingEntities())
             StartCoroutine(mobSpawner.SpawnEntities());
         else
@@ -41,6 +48,9 @@ public class MobTurnManager : MonoBehaviour
         SetCurrentMobHint();
         ApplyStatusEffects();
         ActivateUserButtons();
+
+        if (!mobSpawner.HasLivingEntities())
+            EndTurn();
     }
 
     public void SetCurrentMobHint()
@@ -56,28 +66,24 @@ public class MobTurnManager : MonoBehaviour
             Entity currentEntity = mobSpawner.GetEntity(turnNumber);
             currentEntity.ApplyStartTurnEffect();
         }
-        else
-        {
-            EndTurn();
-        }
     }
 
     public void ActivateUserButtons()
     {
         if (mobSpawner.HasLivingEntities())
-        {
             menuLogic.SetMenu(mobSpawner.GetEntity(turnNumber));
-        }
-        else
-        {
-            EndTurn();
-        }
     }
 
     public void Attack(Attack attack)
     {
         mobSpawner.GetEntity(turnNumber).Attack(playerSpawner.GetEntities().ToArray(), attack);
         EndTurn();
+    }
+
+    private void HandleEntityDeath()
+    {
+        // The next entity has taken the index of the current entity that died
+        turnNumber--;
     }
 
     private void EndTurn()

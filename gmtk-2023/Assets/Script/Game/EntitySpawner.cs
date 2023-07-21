@@ -15,6 +15,7 @@ public class EntitySpawner : MonoBehaviour
     private List<Entity> currentEntities;
     private int deathCount = 0;
 
+    public event Action OnEntityDead;
     public event Action OnAllEntitiesDead;
     public event Action OnEntitiesSpawned;
 
@@ -99,6 +100,8 @@ public class EntitySpawner : MonoBehaviour
             Destroy(currentEntityPrefabs[entityIndex]);
             currentEntityPrefabs.RemoveAt(entityIndex);
         }
+
+        OnEntityDead?.Invoke();
 
         if (currentEntities.Count == 0)
             OnAllEntitiesDead?.Invoke();

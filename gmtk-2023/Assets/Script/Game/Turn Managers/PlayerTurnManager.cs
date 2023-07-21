@@ -59,6 +59,7 @@ public class PlayerTurnManager : MonoBehaviour
     {
         return !playerSpawner.HasLivingEntities();
     }
+
     private IEnumerator EndTurnStatusEffects()
     {
         if (!HasLost())

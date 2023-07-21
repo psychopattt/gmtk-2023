@@ -35,7 +35,7 @@ public class GameTurnManager : MonoBehaviour
                 playerTurnManager.NextTurn();
                 break;
             case GameState.MobTurn:
-                mobTurnManager.NextTurn();
+                mobTurnManager.BeginTurns();
                 break;
             case GameState.Won:
                 sceneController.LoadGameOverWin();
