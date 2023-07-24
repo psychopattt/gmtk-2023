@@ -141,6 +141,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackName: Big Attack
+  selfTargetting: 0
+  cleave: 0
   damage: 5000
   critMultiplier: 1
   critChance: 0
@@ -179,10 +181,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackName: Cleave
+  selfTargetting: 0
+  cleave: 1
   damage: 99999
   critMultiplier: 2
   critChance: 0
-  targetAmount: 20
+  targetAmount: 1
   attackAmount: 1
   selfDamage: 0
   statusEffects: []

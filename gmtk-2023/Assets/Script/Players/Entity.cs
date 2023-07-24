@@ -62,6 +62,10 @@ public class Entity : MonoBehaviour
             {
                 DoAttack(this, attack);
             }
+            else if (attack.Cleave)
+            {
+                AttackAll(entities, attack);
+            }
             else
             {
                 int randomTarget = UnityEngine.Random.Range(0, entities.Length);
@@ -74,6 +78,14 @@ public class Entity : MonoBehaviour
             
         }
     }
+    public void AttackAll(Entity[] entities, Attack attack)
+    {
+        for (int i = 0; i < entities.Length; i++)
+        {
+            DoAttack(entities[i], attack);
+        }
+    }
+
     public void DoAttack(Entity entity, Attack attack)
     {
         attack.playClip();

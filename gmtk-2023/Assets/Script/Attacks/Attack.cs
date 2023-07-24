@@ -19,6 +19,14 @@ public class Attack : MonoBehaviour
     }
 
     [SerializeField]
+    private bool cleave;
+    public bool Cleave
+    {
+        get { return cleave; }
+        set { cleave = value; }
+    }
+
+    [SerializeField]
     private int damage;
     public int Damage
     {
