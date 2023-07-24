@@ -55,14 +55,21 @@ public class Entity : MonoBehaviour
     {
         if (entities.Length == 0)return;
         //stats.Type;
+
         for (int i = 0; i < attack.TargetAmount; i++)
         {
-            
-            int randomTarget = UnityEngine.Random.Range(0, entities.Length);
-            if (entities[randomTarget].stats.Health > 0)
+            if (attack.SelfTargetting)
             {
-                
-                DoAttack(entities[randomTarget], attack);
+                DoAttack(this, attack);
+            }
+            else
+            {
+                int randomTarget = UnityEngine.Random.Range(0, entities.Length);
+                if (entities[randomTarget].stats.Health > 0)
+                {
+
+                    DoAttack(entities[randomTarget], attack);
+                }
             }
             
         }

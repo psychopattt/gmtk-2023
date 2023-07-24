@@ -11,6 +11,14 @@ public class Attack : MonoBehaviour
     }
 
     [SerializeField]
+    private bool selfTargetting;
+    public bool SelfTargetting
+    {
+        get { return selfTargetting; }
+        set { selfTargetting = value; }
+    }
+
+    [SerializeField]
     private int damage;
     public int Damage
     {
